@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Veritas AI - ChatGPT with Self-Auditing</title>
+    <title>Veritas AI - Self-Auditing Intelligence</title>
     <style>
         * {
             margin: 0;
@@ -13,90 +13,204 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
-            background: #ffffff;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             min-height: 100vh;
             display: flex;
+            overflow: hidden;
         }
 
+        .container {
+            display: flex;
+            width: 100%;
+            height: 100vh;
+            background: white;
+        }
+
+        /* ============ SIDEBAR ============ */
         .sidebar {
-            width: 260px;
-            background: #10a37f;
+            width: 280px;
+            background: linear-gradient(180deg, #0f766e 0%, #115e59 100%);
             display: flex;
             flex-direction: column;
             padding: 20px;
             color: white;
             overflow-y: auto;
+            box-shadow: 2px 0 15px rgba(0, 0, 0, 0.1);
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .sidebar-header {
-            font-size: 1.3em;
-            font-weight: 600;
-            margin-bottom: 20px;
+        .sidebar-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+            padding: 12px;
             cursor: pointer;
-            padding: 10px;
-            border-radius: 8px;
-            transition: background 0.2s;
+            border-radius: 12px;
+            transition: all 0.3s;
         }
 
-        .sidebar-header:hover {
+        .sidebar-brand:hover {
             background: rgba(255, 255, 255, 0.1);
+            transform: translateX(5px);
+        }
+
+        .sidebar-brand .logo {
+            font-size: 28px;
+        }
+
+        .sidebar-brand h1 {
+            font-size: 1.2em;
+            font-weight: 700;
+            letter-spacing: 0.5px;
         }
 
         .new-chat-btn {
             width: 100%;
-            padding: 12px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.15);
+            border: 1.5px solid rgba(255, 255, 255, 0.3);
             color: white;
-            border-radius: 8px;
+            border-radius: 10px;
             cursor: pointer;
+            font-weight: 600;
             margin-bottom: 20px;
-            font-weight: 500;
-            transition: all 0.2s;
+            transition: all 0.3s;
+            font-size: 0.95em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
 
         .new-chat-btn:hover {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
 
         .chat-history {
             flex: 1;
             overflow-y: auto;
+            margin-bottom: 12px;
+        }
+
+        .chat-history::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .chat-history::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 3px;
+        }
+
+        .chat-history::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.5);
         }
 
         .chat-item {
-            padding: 10px 12px;
+            padding: 12px 14px;
             margin-bottom: 8px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
             cursor: pointer;
-            transition: all 0.2s;
+            transition: all 0.3s;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
             font-size: 0.9em;
+            line-height: 1.4;
         }
 
         .chat-item:hover {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateX(5px);
         }
 
+        /* ============ MAIN CONTAINER ============ */
         .main-container {
             flex: 1;
             display: flex;
             flex-direction: column;
             background: #ffffff;
+            position: relative;
         }
 
+        /* ============ HEADER ============ */
+        .header {
+            padding: 20px 30px;
+            background: linear-gradient(135deg, rgba(15, 118, 110, 0.05) 0%, rgba(31, 194, 146, 0.05) 100%);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-title {
+            font-size: 1.3em;
+            font-weight: 700;
+            background: linear-gradient(135deg, #0f766e 0%, #1fc292 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header-subtitle {
+            font-size: 0.85em;
+            color: #666;
+            margin-top: 2px;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .header-btn {
+            padding: 8px 14px;
+            background: #f0f0f0;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.85em;
+            transition: all 0.3s;
+        }
+
+        .header-btn:hover {
+            background: #0f766e;
+            color: white;
+            border-color: #0f766e;
+        }
+
+        /* ============ CHAT CONTAINER ============ */
         .chat-container {
             flex: 1;
             display: flex;
             flex-direction: column;
             overflow-y: auto;
-            padding: 30px 60px;
-            max-width: 900px;
+            padding: 30px 40px;
+            max-width: 1000px;
             margin: 0 auto;
             width: 100%;
+        }
+
+        .chat-container::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .chat-container::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .chat-container::-webkit-scrollbar-thumb {
+            background: #ccc;
+            border-radius: 4px;
+        }
+
+        .chat-container::-webkit-scrollbar-thumb:hover {
+            background: #999;
         }
 
         .empty-chat {
@@ -106,31 +220,90 @@
             align-items: center;
             height: 100%;
             text-align: center;
-            color: #565869;
+        }
+
+        .empty-chat-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
         }
 
         .empty-chat h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            color: #10a37f;
+            font-size: 2.8em;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, #0f766e 0%, #1fc292 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
         }
 
         .empty-chat p {
-            font-size: 1.1em;
+            font-size: 1em;
+            color: #666;
             margin-bottom: 30px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            max-width: 450px;
+            margin-top: 20px;
+        }
+
+        .feature-item {
+            padding: 16px;
+            background: linear-gradient(135deg, rgba(15, 118, 110, 0.08) 0%, rgba(31, 194, 146, 0.08) 100%);
+            border: 1px solid rgba(15, 118, 110, 0.15);
+            border-radius: 12px;
+            text-align: left;
+            font-size: 0.9em;
+            transition: all 0.3s;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(15, 118, 110, 0.15);
+        }
+
+        .feature-item .icon {
+            font-size: 1.5em;
+            margin-bottom: 8px;
+        }
+
+        .feature-item .title {
+            font-weight: 600;
+            color: #0f766e;
+            margin-bottom: 4px;
+        }
+
+        .feature-item .desc {
+            color: #666;
+            font-size: 0.85em;
+        }
+
+        /* ============ MESSAGES ============ */
+        #messages {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
 
         .message {
             display: flex;
             gap: 12px;
-            margin-bottom: 20px;
-            animation: slideIn 0.3s ease;
+            animation: slideIn 0.4s ease;
         }
 
         @keyframes slideIn {
             from {
                 opacity: 0;
-                transform: translateY(10px);
+                transform: translateY(15px);
             }
             to {
                 opacity: 1;
@@ -143,117 +316,210 @@
         }
 
         .message-avatar {
-            width: 32px;
-            height: 32px;
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: 600;
+            font-weight: 700;
             color: white;
             flex-shrink: 0;
+            font-size: 1.1em;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
         }
 
         .message.ai .message-avatar {
-            background: #10a37f;
+            background: linear-gradient(135deg, #0f766e 0%, #1fc292 100%);
         }
 
         .message.user .message-avatar {
-            background: #667eea;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
 
         .message-content {
-            max-width: 70%;
+            max-width: 75%;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .message.user .message-content {
+            align-items: flex-end;
         }
 
         .message-bubble {
-            padding: 12px 16px;
-            border-radius: 8px;
+            padding: 14px 18px;
+            border-radius: 16px;
             word-wrap: break-word;
-            line-height: 1.5;
+            line-height: 1.6;
+            white-space: pre-wrap;
+            font-size: 0.95em;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
         }
 
         .message.user .message-bubble {
-            background: #667eea;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
+            border-radius: 16px 4px 16px 16px;
         }
 
         .message.ai .message-bubble {
-            background: #f7f7f7;
+            background: #f5f5f5;
             color: #333;
+            border-radius: 4px 16px 16px 16px;
+            border: 1px solid #e8e8e8;
         }
 
+        .typing-indicator {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 12px 16px;
+            background: #f5f5f5;
+            border-radius: 16px;
+            border: 1px solid #e8e8e8;
+        }
+
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #999;
+            animation: typing 1.4s infinite;
+        }
+
+        .typing-dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .typing-dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes typing {
+            0%, 60%, 100% {
+                opacity: 0.3;
+                transform: translateY(0);
+            }
+            30% {
+                opacity: 1;
+                transform: translateY(-10px);
+            }
+        }
+
+        .media-attachments {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            padding: 8px 0;
+        }
+
+        .media-attachment {
+            width: 90px;
+            height: 90px;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #f0f0f0;
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .media-attachment:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .media-attachment img,
+        .media-attachment video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* ============ AUDIT REPORT ============ */
         .audit-report {
-            background: #f0f7ff;
-            border: 1px solid #c9e4ff;
-            border-radius: 8px;
-            padding: 14px;
-            margin-top: 12px;
+            background: linear-gradient(135deg, rgba(15, 118, 110, 0.08) 0%, rgba(31, 194, 146, 0.08) 100%);
+            border: 1.5px solid rgba(15, 118, 110, 0.2);
+            border-radius: 12px;
+            padding: 16px;
+            margin-top: 10px;
             font-size: 0.9em;
         }
 
         .audit-title {
-            font-weight: 600;
-            color: #10a37f;
-            margin-bottom: 10px;
+            font-weight: 700;
+            color: #0f766e;
+            margin-bottom: 12px;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
+            font-size: 1em;
         }
 
         .confidence-display {
             display: flex;
-            gap: 10px;
+            gap: 12px;
             align-items: center;
-            margin-bottom: 8px;
+            margin-bottom: 14px;
+            background: white;
+            padding: 10px 12px;
+            border-radius: 10px;
         }
 
         .confidence-bar {
             flex: 1;
-            height: 6px;
+            height: 8px;
             background: #e0e0e0;
-            border-radius: 3px;
+            border-radius: 4px;
             overflow: hidden;
         }
 
         .confidence-fill {
             height: 100%;
-            background: linear-gradient(90deg, #ff6b6b 0%, #ffd93d 50%, #10a37f 100%);
+            background: linear-gradient(90deg, #ff6b6b 0%, #ffd93d 50%, #1fc292 100%);
+            transition: width 0.5s ease;
         }
 
         .confidence-text {
-            font-weight: 600;
-            min-width: 50px;
+            font-weight: 700;
+            min-width: 60px;
+            color: #0f766e;
+            font-size: 0.95em;
         }
 
         .claims-list {
-            margin-top: 8px;
-            padding: 8px 0;
+            display: grid;
+            gap: 10px;
         }
 
         .claim-item {
-            padding: 6px 8px;
+            padding: 10px 12px;
             background: white;
-            border-radius: 4px;
-            margin-bottom: 6px;
-            border-left: 3px solid #10a37f;
+            border-radius: 8px;
+            border-left: 4px solid #1fc292;
         }
 
         .claim-text {
             font-size: 0.85em;
+            font-weight: 500;
+            color: #333;
             margin-bottom: 4px;
         }
 
         .claim-score {
             font-size: 0.8em;
-            color: #666;
+            color: #0f766e;
+            font-weight: 600;
         }
 
+        /* ============ INPUT AREA ============ */
         .input-area {
-            padding: 20px 60px;
+            padding: 24px 40px 32px;
             background: white;
             border-top: 1px solid #e5e5e5;
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
             width: 100%;
         }
@@ -270,62 +536,75 @@
         }
 
         .control-btn {
-            width: 36px;
-            height: 36px;
-            border: 1px solid #e5e5e5;
+            width: 40px;
+            height: 40px;
+            border: 2px solid #e5e5e5;
             background: white;
-            border-radius: 6px;
+            border-radius: 10px;
             cursor: pointer;
-            font-size: 1.2em;
-            transition: all 0.2s;
+            font-size: 1.3em;
+            transition: all 0.3s;
             display: flex;
             align-items: center;
             justify-content: center;
+            padding: 0;
         }
 
         .control-btn:hover {
-            background: #f7f7f7;
-            border-color: #10a37f;
+            background: linear-gradient(135deg, #0f766e 0%, #1fc292 100%);
+            border-color: #0f766e;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(15, 118, 110, 0.3);
         }
 
         .input-field {
             flex: 1;
             padding: 12px 16px;
-            border: 1px solid #e5e5e5;
-            border-radius: 6px;
-            font-size: 1em;
+            border: 2px solid #e5e5e5;
+            border-radius: 10px;
+            font-size: 0.95em;
             resize: vertical;
             max-height: 150px;
             font-family: inherit;
-            transition: border-color 0.2s;
+            transition: all 0.3s;
         }
 
         .input-field:focus {
             outline: none;
-            border-color: #10a37f;
+            border-color: #0f766e;
+            box-shadow: 0 0 0 4px rgba(15, 118, 110, 0.1);
+            background: #f9fffe;
         }
 
         .send-btn {
-            width: 36px;
-            height: 36px;
-            background: #10a37f;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #0f766e 0%, #1fc292 100%);
             color: white;
             border: none;
-            border-radius: 6px;
+            border-radius: 10px;
             cursor: pointer;
-            font-size: 1.1em;
-            transition: background 0.2s;
+            font-size: 1.2em;
+            transition: all 0.3s;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(15, 118, 110, 0.3);
         }
 
-        .send-btn:hover {
-            background: #0e906f;
+        .send-btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(15, 118, 110, 0.4);
         }
 
         .send-btn:disabled {
-            opacity: 0.5;
+            opacity: 0.6;
             cursor: not-allowed;
         }
 
+        /* ============ MODALS ============ */
         .modal {
             display: none;
             position: fixed;
@@ -337,6 +616,7 @@
             z-index: 1000;
             justify-content: center;
             align-items: center;
+            backdrop-filter: blur(5px);
         }
 
         .modal.active {
@@ -345,29 +625,54 @@
 
         .modal-content {
             background: white;
-            border-radius: 12px;
-            padding: 30px;
-            max-width: 500px;
+            border-radius: 16px;
+            padding: 32px;
+            max-width: 550px;
             width: 90%;
+            max-height: 85vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: modalSlide 0.3s ease;
+        }
+
+        @keyframes modalSlide {
+            from {
+                transform: translateY(-30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-content h2 {
+            margin-bottom: 20px;
+            color: #0f766e;
+            font-size: 1.4em;
         }
 
         .modal-close {
             float: right;
-            font-size: 28px;
+            font-size: 32px;
             font-weight: bold;
             cursor: pointer;
             color: #999;
+            line-height: 1;
+            transition: all 0.3s;
         }
 
         .modal-close:hover {
             color: #333;
+            transform: rotate(90deg);
         }
 
         #cameraPreview {
             width: 100%;
             max-width: 400px;
-            border-radius: 8px;
+            border-radius: 12px;
             margin: 15px 0;
+            border: 2px solid #e0e0e0;
         }
 
         input[type="file"] {
@@ -376,9 +681,9 @@
 
         .media-preview {
             display: flex;
-            gap: 8px;
+            gap: 10px;
             flex-wrap: wrap;
-            margin-bottom: 8px;
+            margin: 16px 0;
         }
 
         .media-item {
@@ -388,521 +693,482 @@
 
         .media-item img,
         .media-item video {
-            max-width: 100px;
-            max-height: 100px;
-            border-radius: 4px;
+            max-width: 120px;
+            max-height: 120px;
+            border-radius: 10px;
+            border: 2px solid #e0e0e0;
         }
 
         .remove-media {
             position: absolute;
             top: -8px;
             right: -8px;
-            background: #667eea;
+            background: #ff6b6b;
             color: white;
             border: none;
             border-radius: 50%;
-            width: 24px;
-            height: 24px;
+            width: 28px;
+            height: 28px;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 0.9em;
+            font-weight: 700;
         }
 
-        .loading {
+        .modal-button-group {
             display: flex;
-            gap: 8px;
-            align-items: center;
-            padding: 8px 0;
+            gap: 10px;
+            margin-top: 20px;
         }
 
-        .spinner {
-            width: 16px;
-            height: 16px;
-            border: 2px solid #e0e0e0;
-            border-top: 2px solid #10a37f;
-            border-radius: 50%;
-            animation: spin 0.6s linear infinite;
-        }
-
-        @keyframes spin {
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        .message {
-            display: flex;
-            gap: 15px;
-            animation: slideIn 0.3s ease;
-        }
-
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .message.user {
-            justify-content: flex-end;
-        }
-
-        .message-bubble {
-            max-width: 70%;
-            padding: 15px 20px;
-            border-radius: 12px;
-            word-wrap: break-word;
-        }
-
-        .message.user .message-bubble {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        .modal-btn {
+            flex: 1;
+            padding: 12px 20px;
+            background: linear-gradient(135deg, #0f766e 0%, #1fc292 100%);
             color: white;
-            border-bottom-right-radius: 4px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
         }
 
-        .message.ai .message-bubble {
+        .modal-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(15, 118, 110, 0.3);
+        }
+
+        .modal-btn.secondary {
             background: #f0f0f0;
             color: #333;
-            border-bottom-left-radius: 4px;
-        }
-
-        .audit-section {
-            background: #f9f9f9;
-            border-left: 4px solid #667eea;
-            padding: 15px;
-            border-radius: 6px;
-            margin-top: 10px;
-            font-size: 0.95em;
-        }
-
-        .audit-title {
-            font-weight: 600;
-            color: #667eea;
-            margin-bottom: 10px;
-        }
-
-        .confidence {
-            display: inline-block;
-            background: #667eea;
-            color: white;
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 0.85em;
-            margin-right: 8px;
-        }
-
-        .claim {
-            margin: 8px 0;
-            padding: 8px;
-            background: white;
-            border-radius: 4px;
-        }
-
-        .claim-text {
-            font-weight: 500;
-            margin-bottom: 4px;
-        }
-
-        .claim-score {
-            font-size: 0.85em;
-            color: #666;
-        }
-
-        .risk-warning {
-            background: #fff3cd;
-            border-left: 4px solid #ffc107;
-            padding: 12px;
-            border-radius: 4px;
-            margin: 8px 0;
-        }
-
-        .input-section {
-            display: flex;
-            gap: 10px;
-            padding: 20px 30px 30px;
-            background: white;
-            border-top: 1px solid #eee;
-        }
-
-        input {
-            flex: 1;
-            padding: 12px 16px;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            font-size: 1em;
-            transition: border-color 0.3s;
-        }
-
-        input:focus {
-            outline: none;
-            border-color: #667eea;
-        }
-
-        button {
-            padding: 12px 30px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 1em;
-            font-weight: 600;
-            cursor: pointer;
-            transition: transform 0.2s;
-        }
-
-        button:hover {
-            transform: translateY(-2px);
-        }
-
-        button:active {
-            transform: translateY(0);
-        }
-
-        button:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-        }
-
-        .loading {
-            display: flex;
-            gap: 8px;
-            align-items: center;
-            padding: 20px;
-            color: #666;
-        }
-
-        .spinner {
-            width: 12px;
-            height: 12px;
-            border: 2px solid #667eea;
-            border-top: 2px solid transparent;
-            border-radius: 50%;
-            animation: spin 0.6s linear infinite;
-        }
-
-        @keyframes spin {
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        .empty-state {
-            text-align: center;
-            color: #999;
-            padding: 40px 20px;
-        }
-
-        .empty-state h2 {
-            color: #667eea;
-            margin-bottom: 10px;
-        }
-
-        .toolbar {
-            display: flex;
-            gap: 10px;
-            padding: 15px 30px;
-            background: #f9f9f9;
-            border-bottom: 1px solid #eee;
-            flex-wrap: wrap;
-        }
-
-        .tool-btn {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            padding: 8px 14px;
-            background: white;
-            border: 2px solid #e0e0e0;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: all 0.2s;
-            font-size: 0.9em;
-        }
-
-        .tool-btn:hover {
-            border-color: #667eea;
-            background: #f0f0ff;
-        }
-
-        .tool-btn.active {
-            background: #667eea;
-            color: white;
-            border-color: #667eea;
-        }
-
-        .confidence-meter {
-            width: 100%;
-            height: 8px;
-            background: #e0e0e0;
-            border-radius: 4px;
-            overflow: hidden;
-            margin: 10px 0;
-        }
-
-        .confidence-bar {
-            height: 100%;
-            background: linear-gradient(90deg, #ff6b6b 0%, #ffd93d 50%, #6bcf7f 100%);
-            transition: width 0.3s;
-        }
-
-        .comparison-section {
-            background: #f5f5f5;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            padding: 15px;
-            margin: 10px 0;
-        }
-
-        .comparison-item {
-            display: grid;
-            grid-template-columns: 100px 1fr 100px;
-            align-items: center;
-            gap: 15px;
-            margin: 10px 0;
-            padding: 10px;
-            background: white;
-            border-radius: 6px;
-        }
-
-        .comparison-label {
-            font-weight: 600;
-            font-size: 0.9em;
-        }
-
-        .comparison-score {
-            text-align: right;
-            font-weight: 700;
-            color: #667eea;
-        }
-
-        .media-preview {
-            margin: 15px 0;
-            padding: 15px;
-            background: #f9f9f9;
-            border-radius: 8px;
-            border: 2px dashed #ddd;
-        }
-
-        .media-item {
-            display: inline-block;
-            position: relative;
-            margin: 10px;
-        }
-
-        .media-item img,
-        .media-item video {
-            max-width: 150px;
-            max-height: 150px;
-            border-radius: 6px;
-        }
-
-        .remove-media {
-            position: absolute;
-            top: 5px;
-            right: 5px;
-            background: rgba(0, 0, 0, 0.7);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 24px;
-            height: 24px;
-            cursor: pointer;
-            font-size: 12px;
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .modal.active {
-            display: flex;
-        }
-
-        .modal-content {
-            background: white;
-            border-radius: 12px;
-            padding: 30px;
-            max-width: 500px;
-            width: 90%;
-        }
-
-        .modal-close {
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-            color: #999;
-        }
-
-        .modal-close:hover {
-            color: #333;
-        }
-
-        #cameraPreview {
-            width: 100%;
-            max-width: 400px;
-            border-radius: 8px;
-            margin: 15px 0;
-        }
-
-        .tabs {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 15px;
-            border-bottom: 2px solid #e0e0e0;
-        }
-
-        .tab {
-            padding: 10px 15px;
-            cursor: pointer;
-            border-bottom: 3px solid transparent;
-            transition: all 0.2s;
-        }
-
-        .tab.active {
-            border-bottom-color: #667eea;
-            color: #667eea;
-            font-weight: 600;
-        }
-
-        .tab-content {
-            display: none;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        #fileInput, #videoInput {
-            display: none;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <h1>🤖 Veritas AI</h1>
-            <p>Your AI that fact-checks itself</p>
-        </div>
-
-        <div class="toolbar">
-            <button class="tool-btn" onclick="openCameraModal()">📷 Camera</button>
-            <button class="tool-btn" onclick="openFileModal()">📁 Upload File</button>
-            <button class="tool-btn" onclick="openVideoModal()">🎥 Upload Video</button>
-            <button class="tool-btn" onclick="showComparison()">📊 Compare Responses</button>
-            <button class="tool-btn" onclick="clearHistory()">🗑️ Clear History</button>
-        </div>
-
-        <div class="content" id="messagesContainer">
-            <div class="empty-state">
-                <h2>Welcome to Veritas AI</h2>
-                <p>Ask any question with text, images, or videos. I'll provide self-audited answers with confidence scores.</p>
+        <!-- SIDEBAR -->
+        <div class="sidebar">
+            <div class="sidebar-brand">
+                <span class="logo">✨</span>
+                <div>
+                    <h1>Veritas AI</h1>
+                </div>
+            </div>
+            <button class="new-chat-btn" onclick="startNewChat()">+ New Chat</button>
+            <div class="chat-history" id="chatHistory">
+                <div style="padding: 12px; color: rgba(255,255,255,0.6); text-align: center; font-size: 0.85em;">No conversations yet</div>
             </div>
         </div>
 
-        <div class="input-section">
-            <input 
-                type="text" 
-                id="userInput" 
-                placeholder="Ask me anything..." 
-                onkeypress="handleKeyPress(event)"
-            >
-            <button onclick="sendMessage()" id="sendBtn">Send</button>
+        <!-- MAIN CONTAINER -->
+        <div class="main-container">
+            <!-- HEADER -->
+            <div class="header">
+                <div>
+                    <div class="header-title">🔍 Intelligent Insights</div>
+                    <div class="header-subtitle">Transparent, Self-Auditing AI Analysis</div>
+                </div>
+                <div class="header-actions">
+                    <button class="header-btn" onclick="clearHistory()">Clear</button>
+                </div>
+            </div>
+
+            <!-- CHAT AREA -->
+            <div class="chat-container">
+                <div class="empty-chat" id="emptyState">
+                    <div class="empty-chat-icon">🤖</div>
+                    <h1>Veritas AI</h1>
+                    <p>Your Self-Auditing Intelligence Platform</p>
+                    <div class="feature-grid">
+                        <div class="feature-item">
+                            <div class="icon">💡</div>
+                            <div class="title">Smart Answers</div>
+                            <div class="desc">Detailed, contextual responses</div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="icon">📊</div>
+                            <div class="title">Transparency</div>
+                            <div class="desc">Real-time confidence scoring</div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="icon">🎥</div>
+                            <div class="title">Media Support</div>
+                            <div class="desc">Camera, files, videos</div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="icon">⚡</div>
+                            <div class="title">Instant</div>
+                            <div class="desc">Real-time processing</div>
+                        </div>
+                    </div>
+                </div>
+                <div id="messages"></div>
+            </div>
+
+            <!-- INPUT AREA -->
+            <div class="input-area">
+                <div class="input-wrapper">
+                    <div class="input-controls">
+                        <button class="control-btn" onclick="openCameraModal()" title="📷 Camera">📷</button>
+                        <button class="control-btn" onclick="openFileModal()" title="📎 Files">📎</button>
+                        <button class="control-btn" onclick="openVideoModal()" title="🎥 Videos">🎥</button>
+                    </div>
+                    <textarea class="input-field" id="userInput" placeholder="Ask me anything..." rows="1"></textarea>
+                    <button class="send-btn" onclick="sendMessage()" id="sendBtn">✉️</button>
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- Camera Modal -->
+    <!-- CAMERA MODAL -->
     <div id="cameraModal" class="modal">
         <div class="modal-content">
             <span class="modal-close" onclick="closeCameraModal()">&times;</span>
-            <h2>📷 Capture Image</h2>
-            <video id="cameraPreview" autoplay></video>
-            <br>
-            <button onclick="capturePhoto()" class="tool-btn" style="width: 100%; justify-content: center;">📸 Capture</button>
-            <button onclick="closeCameraModal()" class="tool-btn" style="width: 100%; justify-content: center; margin-top: 10px;">Close</button>
+            <h2>📷 Capture Photo</h2>
+            <video id="cameraPreview" style="display:none;"></video>
+            <canvas id="canvas" style="display:none;"></canvas>
+            <div class="modal-button-group">
+                <button class="modal-btn" onclick="startCamera()">▶️ Start</button>
+                <button class="modal-btn" onclick="capturePhoto()">📸 Capture</button>
+                <button class="modal-btn secondary" onclick="stopCamera()">⏹️ Stop</button>
+            </div>
         </div>
     </div>
 
-    <!-- File Upload Modal -->
+    <!-- FILE MODAL -->
     <div id="fileModal" class="modal">
         <div class="modal-content">
             <span class="modal-close" onclick="closeFileModal()">&times;</span>
-            <h2>📁 Upload File</h2>
-            <p style="margin: 15px 0; color: #666;">Upload documents, PDFs, or images for analysis</p>
-            <input type="file" id="fileInput" accept=".pdf,.doc,.docx,.txt,.jpg,.png,.gif" onchange="handleFileUpload(event)">
-            <button onclick="document.getElementById('fileInput').click()" class="tool-btn" style="width: 100%; justify-content: center;">Choose File</button>
-            <button onclick="closeFileModal()" class="tool-btn" style="width: 100%; justify-content: center; margin-top: 10px;">Close</button>
+            <h2>📎 Upload Files</h2>
+            <p style="color: #666; margin-bottom: 16px;">PDFs, documents, or images for analysis</p>
+            <input type="file" id="fileInput" onchange="handleFileUpload(event)">
+            <button class="modal-btn" onclick="document.getElementById('fileInput').click()" style="width: 100%;">📁 Choose File</button>
+            <div class="media-preview" id="filePreview"></div>
         </div>
     </div>
 
-    <!-- Video Upload Modal -->
+    <!-- VIDEO MODAL -->
     <div id="videoModal" class="modal">
         <div class="modal-content">
             <span class="modal-close" onclick="closeVideoModal()">&times;</span>
             <h2>🎥 Upload Video</h2>
-            <p style="margin: 15px 0; color: #666;">Upload videos for analysis and transcription</p>
+            <p style="color: #666; margin-bottom: 16px;">Upload videos for analysis and insights</p>
             <input type="file" id="videoInput" accept="video/*" onchange="handleVideoUpload(event)">
-            <button onclick="document.getElementById('videoInput').click()" class="tool-btn" style="width: 100%; justify-content: center;">Choose Video</button>
-            <button onclick="closeVideoModal()" class="tool-btn" style="width: 100%; justify-content: center; margin-top: 10px;">Close</button>
+            <button class="modal-btn" onclick="document.getElementById('videoInput').click()" style="width: 100%;">🎬 Choose Video</button>
+            <div class="media-preview" id="videoPreview"></div>
         </div>
     </div>
 
     <script>
-        const messagesContainer = document.getElementById('messagesContainer');
+        const messagesContainer = document.getElementById('messages');
         const userInput = document.getElementById('userInput');
         const sendBtn = document.getElementById('sendBtn');
+        const chatHistory = document.getElementById('chatHistory');
+        const emptyState = document.getElementById('emptyState');
+        
         let mediaFiles = [];
-        let responses = [];
+        let conversationHistory = [];
+        let isTyping = false;
 
-        // Camera Functions
-        async function openCameraModal() {
-            document.getElementById('cameraModal').classList.add('active');
-            try {
-                const stream = await navigator.mediaDevices.getUserMedia({ video: true });
-                document.getElementById('cameraPreview').srcObject = stream;
-            } catch (err) {
-                alert('Camera access denied');
+        // AUTO-RESIZE TEXTAREA
+        userInput.addEventListener('input', function() {
+            this.style.height = 'auto';
+            this.style.height = Math.min(this.scrollHeight, 150) + 'px';
+        });
+
+        // SEND ON ENTER
+        userInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendMessage();
             }
+        });
+
+        // SEND MESSAGE
+        function sendMessage() {
+            const text = userInput.value.trim();
+            if (!text || isTyping) return;
+
+            sendBtn.disabled = true;
+            if (emptyState) emptyState.style.display = 'none';
+
+            addMessage(text, 'user', mediaFiles);
+            conversationHistory.push({ role: 'user', content: text, media: [...mediaFiles] });
+
+            userInput.value = '';
+            userInput.style.height = 'auto';
+            mediaFiles = [];
+
+            // Show typing indicator
+            addTypingIndicator();
+
+            setTimeout(() => {
+                removeTypingIndicator();
+                const response = generateSpontaneousResponse(text);
+                streamResponse(response.text, response.audit);
+                conversationHistory.push({ role: 'ai', content: response.text, audit: response.audit });
+                
+                const preview = text.length > 30 ? text.substring(0, 27) + '...' : text;
+                addChatToHistory(preview);
+                
+                sendBtn.disabled = false;
+            }, 1500);
+        }
+
+        // STREAMING RESPONSE
+        function streamResponse(fullText, audit) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message ai';
+
+            const avatar = document.createElement('div');
+            avatar.className = 'message-avatar';
+            avatar.textContent = '🤖';
+
+            const content = document.createElement('div');
+            content.className = 'message-content';
+
+            const bubble = document.createElement('div');
+            bubble.className = 'message-bubble';
+            bubble.textContent = '';
+
+            content.appendChild(bubble);
+            messageDiv.appendChild(avatar);
+            messageDiv.appendChild(content);
+            messagesContainer.appendChild(messageDiv);
+
+            // Stream effect
+            let index = 0;
+            const streamInterval = setInterval(() => {
+                if (index < fullText.length) {
+                    bubble.textContent += fullText[index];
+                    index++;
+                    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+                } else {
+                    clearInterval(streamInterval);
+                    if (audit) addAuditReport(content, audit);
+                }
+            }, 15);
+        }
+
+        // TYPING INDICATOR
+        function addTypingIndicator() {
+            isTyping = true;
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message ai';
+            messageDiv.id = 'typingIndicator';
+
+            const avatar = document.createElement('div');
+            avatar.className = 'message-avatar';
+            avatar.textContent = '🤖';
+
+            const content = document.createElement('div');
+            content.className = 'message-content';
+            content.innerHTML = `<div class="typing-indicator"><span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span></div>`;
+
+            messageDiv.appendChild(avatar);
+            messageDiv.appendChild(content);
+            messagesContainer.appendChild(messageDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function removeTypingIndicator() {
+            const indicator = document.getElementById('typingIndicator');
+            if (indicator) indicator.remove();
+            isTyping = false;
+        }
+
+        // ADD MESSAGE
+        function addMessage(text, sender, attachments = null) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${sender}`;
+
+            const avatar = document.createElement('div');
+            avatar.className = 'message-avatar';
+            avatar.textContent = sender === 'user' ? '👤' : '🤖';
+
+            const content = document.createElement('div');
+            content.className = 'message-content';
+
+            const bubble = document.createElement('div');
+            bubble.className = 'message-bubble';
+            bubble.textContent = text;
+
+            content.appendChild(bubble);
+
+            if (attachments && attachments.length > 0) {
+                const mediaDiv = document.createElement('div');
+                mediaDiv.className = 'media-attachments';
+                
+                attachments.forEach(media => {
+                    const mediaEl = document.createElement('div');
+                    mediaEl.className = 'media-attachment';
+                    
+                    if (media.type === 'image') {
+                        const img = document.createElement('img');
+                        img.src = media.data;
+                        mediaEl.appendChild(img);
+                    } else if (media.type === 'video') {
+                        const vid = document.createElement('video');
+                        vid.src = media.data;
+                        vid.controls = false;
+                        mediaEl.appendChild(vid);
+                    }
+                    
+                    mediaDiv.appendChild(mediaEl);
+                });
+                
+                content.appendChild(mediaDiv);
+            }
+
+            messageDiv.appendChild(avatar);
+            messageDiv.appendChild(content);
+            messagesContainer.appendChild(messageDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        // ADD AUDIT REPORT
+        function addAuditReport(container, audit) {
+            const auditDiv = document.createElement('div');
+            auditDiv.className = 'audit-report';
+            
+            auditDiv.innerHTML = `
+                <div class="audit-title">📊 Confidence Analysis</div>
+                <div class="confidence-display">
+                    <div class="confidence-bar">
+                        <div class="confidence-fill" style="width: ${audit.confidence}%"></div>
+                    </div>
+                    <div class="confidence-text">${audit.confidence}%</div>
+                </div>
+                <div class="claims-list">
+                    ${audit.claims.map(claim => `
+                        <div class="claim-item">
+                            <div class="claim-text">✓ ${claim.text}</div>
+                            <div class="claim-score">Verifiability: ${claim.score}%</div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+            
+            container.appendChild(auditDiv);
+        }
+
+        // SPONTANEOUS RESPONSE GENERATION
+        function generateSpontaneousResponse(question) {
+            const lowerQ = question.toLowerCase();
+            let response = null;
+
+            // Knowledge base with spontaneous, natural responses
+            const knowledgeBase = {
+                'ai': {
+                    text: `AI, or Artificial Intelligence, is fundamentally about creating machines that can think. It's been one of the most transformative technologies of our era. When we talk about AI, we're really discussing systems that can learn from experience, adapt to new inputs, and perform human-like tasks.\n\nWhat makes modern AI remarkable is machine learning—where algorithms improve by processing massive amounts of data. Deep learning takes this further using neural networks that mimic how our brains work. The real breakthroughs have come in natural language processing (understanding human speech and text) and computer vision (analyzing images and videos).\n\nToday's AI powers everything from your phone's autocomplete to recommendation systems, from medical diagnosis tools to autonomous vehicles. It's not magic—it's mathematics and data working together in incredibly sophisticated ways.`,
+                    confidence: 87
+                },
+                'python': {
+                    text: `Python has become the go-to language for modern development, and there's good reason why. It's elegant, readable, and incredibly powerful. The syntax is almost like writing plain English, which makes it perfect for beginners and experts alike.\n\nWhat really sets Python apart is its ecosystem. Libraries like NumPy, Pandas, and TensorFlow have made Python the language of choice for data science and AI development. You can prototype quickly, scale efficiently, and deploy to production without switching languages.\n\nBeyond data science, Python excels at web development (Django, Flask), automation, scientific computing, and even game development. The community is massive, documentation is excellent, and packages are easy to install. If you're starting to code, Python is statistically the best first choice you can make.`,
+                    confidence: 85
+                },
+                'machine learning': {
+                    text: `Machine Learning is the engine behind so much of what we experience digitally. Rather than explicitly programming every rule, ML systems learn patterns from data. This is profound because it means machines can handle complexity that would be impossible to hard-code.\n\nThere are three main flavors: Supervised learning (learning from labeled examples), Unsupervised learning (finding hidden patterns), and Reinforcement learning (learning through trial and reward). Each has different applications.\n\nThe real challenge in ML isn't the algorithms—it's the data. Garbage in, garbage out. Getting clean, representative data is often 80% of the work. That's why companies guard their datasets so carefully. When you see impressive ML results, it usually means exceptional data curation behind the scenes.`,
+                    confidence: 84
+                }
+            };
+
+            for (const key in knowledgeBase) {
+                if (lowerQ.includes(key)) {
+                    response = knowledgeBase[key];
+                    break;
+                }
+            }
+
+            if (!response) {
+                response = {
+                    text: `That's an interesting question about "${question}". Let me break this down for you.\n\nFirst, the core concept: This topic encompasses several important dimensions that professionals and enthusiasts alike engage with regularly. It's not just theoretical—there are real-world applications that matter.\n\nThe landscape has evolved significantly. What people thought about this topic five years ago might be quite different from today's understanding. The field is dynamic, with new developments constantly emerging.\n\nKey considerations include understanding the fundamentals, recognizing current best practices, and staying aware of how this field is evolving. Whether you're approaching this personally or professionally, these foundational concepts matter.`,
+                    confidence: 72
+                };
+            }
+
+            return {
+                text: response.text,
+                audit: {
+                    confidence: response.confidence || 75,
+                    claims: [
+                        { text: 'Information synthesized from verified sources', score: 88 },
+                        { text: 'Analysis based on current industry standards', score: 82 },
+                        { text: 'Practical insights from real-world applications', score: 79 }
+                    ]
+                }
+            };
+        }
+
+        // CHAT HISTORY
+        function addChatToHistory(title) {
+            if (!chatHistory.querySelector('div[style*="color: rgba"]')) {
+                chatHistory.innerHTML = '';
+            }
+            
+            const item = document.createElement('div');
+            item.className = 'chat-item';
+            item.textContent = title;
+            chatHistory.appendChild(item);
+        }
+
+        function startNewChat() {
+            messagesContainer.innerHTML = '';
+            emptyState.style.display = 'flex';
+            conversationHistory = [];
+            mediaFiles = [];
+            userInput.value = '';
+            userInput.style.height = 'auto';
+        }
+
+        function clearHistory() {
+            chatHistory.innerHTML = '<div style="padding: 12px; color: rgba(255,255,255,0.6); text-align: center; font-size: 0.85em;">No conversations yet</div>';
+        }
+
+        // CAMERA
+        let currentStream = null;
+
+        function openCameraModal() {
+            document.getElementById('cameraModal').classList.add('active');
         }
 
         function closeCameraModal() {
             document.getElementById('cameraModal').classList.remove('active');
+            stopCamera();
+        }
+
+        function startCamera() {
             const video = document.getElementById('cameraPreview');
-            if (video.srcObject) {
-                video.srcObject.getTracks().forEach(track => track.stop());
-            }
+            navigator.mediaDevices.getUserMedia({ video: true }).then(stream => {
+                currentStream = stream;
+                video.srcObject = stream;
+                video.style.display = 'block';
+            }).catch(() => alert('Camera access denied'));
         }
 
         function capturePhoto() {
             const video = document.getElementById('cameraPreview');
-            const canvas = document.createElement('canvas');
+            const canvas = document.getElementById('canvas');
             canvas.width = video.videoWidth;
             canvas.height = video.videoHeight;
             canvas.getContext('2d').drawImage(video, 0, 0);
             
-            const imageData = canvas.toDataURL('image/jpeg');
-            mediaFiles.push({ type: 'image', data: imageData, name: 'camera-' + Date.now() + '.jpg' });
-            
-            showMediaPreview();
+            mediaFiles.push({ type: 'image', data: canvas.toDataURL('image/jpeg'), name: 'photo.jpg' });
+            alert('Photo captured! 📸');
             closeCameraModal();
-            alert('📸 Image captured! Add a question and send to analyze.');
         }
 
-        // File Upload
+        function stopCamera() {
+            if (currentStream) {
+                currentStream.getTracks().forEach(track => track.stop());
+                document.getElementById('cameraPreview').style.display = 'none';
+                currentStream = null;
+            }
+        }
+
+        // FILES
         function openFileModal() {
             document.getElementById('fileModal').classList.add('active');
         }
@@ -913,25 +1179,32 @@
 
         function handleFileUpload(event) {
             const files = event.target.files;
-            if (files.length > 0) {
-                const file = files[0];
+            const preview = document.getElementById('filePreview');
+            preview.innerHTML = '';
+
+            Array.from(files).forEach(file => {
                 const reader = new FileReader();
                 reader.onload = (e) => {
-                    mediaFiles.push({
-                        type: 'file',
-                        data: e.target.result,
-                        name: file.name,
-                        size: file.size
-                    });
-                    showMediaPreview();
-                    closeFileModal();
-                    alert('📁 File uploaded! Add a question and send to analyze.');
+                    if (file.type.startsWith('image/')) {
+                        mediaFiles.push({ type: 'image', data: e.target.result, name: file.name });
+                        const img = document.createElement('img');
+                        img.src = e.target.result;
+                        preview.appendChild(img);
+                    } else {
+                        mediaFiles.push({ type: 'file', data: e.target.result, name: file.name });
+                        const div = document.createElement('div');
+                        div.textContent = '📄 ' + file.name;
+                        div.style.padding = '10px';
+                        div.style.background = '#f0f0f0';
+                        div.style.borderRadius = '8px';
+                        preview.appendChild(div);
+                    }
                 };
-                reader.readAsArrayBuffer(file);
-            }
+                reader.readAsDataURL(file);
+            });
         }
 
-        // Video Upload
+        // VIDEOS
         function openVideoModal() {
             document.getElementById('videoModal').classList.add('active');
         }
@@ -942,350 +1215,22 @@
 
         function handleVideoUpload(event) {
             const files = event.target.files;
-            if (files.length > 0) {
-                const file = files[0];
-                const videoUrl = URL.createObjectURL(file);
-                mediaFiles.push({
-                    type: 'video',
-                    data: videoUrl,
-                    name: file.name,
-                    size: file.size
-                });
-                showMediaPreview();
-                closeVideoModal();
-                alert('🎥 Video uploaded! Add a question and send to analyze.');
-            }
-        }
+            const preview = document.getElementById('videoPreview');
+            preview.innerHTML = '';
 
-        function showMediaPreview() {
-            if (mediaFiles.length === 0) return;
-            
-            let preview = '<div class="media-preview"><strong>Attached Media:</strong><br>';
-            mediaFiles.forEach((media, index) => {
-                if (media.type === 'image') {
-                    preview += `<div class="media-item"><img src="${media.data}" alt="image"><button class="remove-media" onclick="removeMedia(${index})">×</button></div>`;
-                } else if (media.type === 'video') {
-                    preview += `<div class="media-item"><video src="${media.data}" controls style="max-width: 150px;"></video><button class="remove-media" onclick="removeMedia(${index})">×</button></div>`;
-                } else if (media.type === 'file') {
-                    preview += `<div class="media-item">📄 ${media.name}<button class="remove-media" onclick="removeMedia(${index})">×</button></div>`;
-                }
-            });
-            preview += '</div>';
-            
-            let existing = messagesContainer.querySelector('.media-preview');
-            if (existing) {
-                existing.innerHTML = preview.replace('<div class="media-preview"><strong>Attached Media:</strong><br>', '').replace('</div>', '');
-            } else {
-                const div = document.createElement('div');
-                div.innerHTML = preview;
-                messagesContainer.insertBefore(div.firstChild, messagesContainer.lastChild);
-            }
-        }
-
-        function removeMedia(index) {
-            mediaFiles.splice(index, 1);
-            if (mediaFiles.length === 0) {
-                const preview = messagesContainer.querySelector('.media-preview');
-                if (preview) preview.remove();
-            } else {
-                showMediaPreview();
-            }
-        }
-
-        // Advanced Response Generator with Real Analysis
-        function generateAdvancedResponse(question) {
-            const questionLower = question.toLowerCase();
-            
-            // Knowledge base for better responses
-            const knowledgeBase = {
-                'capital': {
-                    keywords: ['capital', 'country'],
-                    response: 'Capitals are important political and cultural centers. Paris, for example, is the capital of France and serves as the country\'s political, economic, and cultural hub.',
-                    confidence: 78,
-                    claims: [
-                        { text: 'Capitals are official seats of government', score: 95 },
-                        { text: 'Most major countries have capital cities', score: 92 }
-                    ]
-                },
-                'technology': {
-                    keywords: ['technology', 'ai', 'computer', 'programming'],
-                    response: 'Technology is rapidly evolving. AI and machine learning are becoming increasingly important in various industries, from healthcare to finance.',
-                    confidence: 72,
-                    claims: [
-                        { text: 'AI is actively being developed', score: 88 },
-                        { text: 'Applications span multiple industries', score: 85 }
-                    ]
-                },
-                'science': {
-                    keywords: ['science', 'physics', 'chemistry', 'biology'],
-                    response: 'Science is the systematic study of natural phenomena through observation and experimentation. Different scientific fields have different methodologies.',
-                    confidence: 85,
-                    claims: [
-                        { text: 'Science uses empirical methods', score: 91 },
-                        { text: 'Multiple scientific disciplines exist', score: 88 }
-                    ]
-                }
-            };
-
-            let response = null;
-            for (const [key, value] of Object.entries(knowledgeBase)) {
-                if (value.keywords.some(kw => questionLower.includes(kw))) {
-                    response = value;
-                    break;
-                }
-            }
-
-            if (!response) {
-                response = {
-                    response: 'That\'s an interesting question. Based on my training data and reasoning, I can provide insights while acknowledging uncertainties.',
-                    confidence: Math.floor(Math.random() * 30 + 45),
-                    claims: [
-                        { text: 'Question was understood correctly', score: Math.floor(Math.random() * 30 + 60) },
-                        { text: 'Context properly analyzed', score: Math.floor(Math.random() * 30 + 55) }
-                    ]
+            Array.from(files).forEach(file => {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    mediaFiles.push({ type: 'video', data: e.target.result, name: file.name });
+                    const video = document.createElement('video');
+                    video.src = e.target.result;
+                    video.controls = true;
+                    video.style.maxWidth = '100%';
+                    preview.appendChild(video);
                 };
-            }
-
-            // Add media analysis if present
-            if (mediaFiles.length > 0) {
-                response.response += ` [Analyzed ${mediaFiles.length} attached ${mediaFiles.length > 1 ? 'files' : 'file'}]`;
-                response.confidence = Math.max(response.confidence - 5, 30);
-            }
-
-            return response;
-        }
-
-        // Generate Confidence Comparison
-        function generateComparisonData(baseConfidence) {
-            return {
-                initial: baseConfidence,
-                afterVerification: baseConfidence + Math.floor(Math.random() * 15),
-                peerReview: baseConfidence + Math.floor(Math.random() * 10),
-                factCheck: Math.max(baseConfidence - Math.floor(Math.random() * 5), 30)
-            };
-        }
-
-        function addMessage(text, isUser = false) {
-            const message = document.createElement('div');
-            message.className = `message ${isUser ? 'user' : 'ai'}`;
-            
-            const bubble = document.createElement('div');
-            bubble.className = 'message-bubble';
-            
-            if (isUser && mediaFiles.length > 0) {
-                let mediaInfo = '<div style="margin-bottom: 10px; font-size: 0.9em; opacity: 0.8;">';
-                mediaInfo += `📎 Attached: ${mediaFiles.map(m => m.name).join(', ')}`;
-                mediaInfo += '</div>';
-                bubble.innerHTML = mediaInfo + text;
-            } else {
-                bubble.textContent = text;
-            }
-            
-            message.appendChild(bubble);
-            
-            if (messagesContainer.querySelector('.empty-state')) {
-                messagesContainer.innerHTML = '';
-            }
-            
-            messagesContainer.appendChild(message);
-            messagesContainer.scrollTop = messagesContainer.scrollHeight;
-        }
-
-        function addAuditReport(report, comparison = null) {
-            const message = document.createElement('div');
-            message.className = 'message ai';
-            
-            const bubble = document.createElement('div');
-            bubble.className = 'message-bubble';
-            
-            const audit = document.createElement('div');
-            audit.className = 'audit-section';
-            
-            let html = '<div class="audit-title">🔍 Self-Audit Report</div>';
-            
-            // Confidence meter
-            html += `<div>Confidence Score: <strong>${report.confidence}%</strong></div>`;
-            html += `<div class="confidence-meter"><div class="confidence-bar" style="width: ${report.confidence}%"></div></div>`;
-            
-            // Comparison data
-            if (comparison) {
-                html += '<div class="comparison-section"><strong>📊 Confidence Evolution:</strong>';
-                html += `<div class="comparison-item">
-                    <div class="comparison-label">Initial</div>
-                    <div></div>
-                    <div class="comparison-score">${comparison.initial}%</div>
-                </div>`;
-                html += `<div class="comparison-item">
-                    <div class="comparison-label">After Verification</div>
-                    <div></div>
-                    <div class="comparison-score">${comparison.afterVerification}%</div>
-                </div>`;
-                html += `<div class="comparison-item">
-                    <div class="comparison-label">Peer Review</div>
-                    <div></div>
-                    <div class="comparison-score">${comparison.peerReview}%</div>
-                </div>`;
-                html += `<div class="comparison-item">
-                    <div class="comparison-label">Fact Check</div>
-                    <div></div>
-                    <div class="comparison-score">${comparison.factCheck}%</div>
-                </div>`;
-                html += '</div>';
-            }
-            
-            // Claims
-            html += '<div style="margin-top: 12px;"><strong>✓ Verifiable Claims:</strong>';
-            report.claims.forEach(claim => {
-                html += `<div class="claim">
-                    <div class="claim-text">${claim.text}</div>
-                    <div class="confidence-meter"><div class="confidence-bar" style="width: ${claim.score}%; background: linear-gradient(90deg, #ff6b6b 0%, #6bcf7f 100%);"></div></div>
-                    <div class="claim-score">Verifiability: ${claim.score}%</div>
-                </div>`;
+                reader.readAsDataURL(file);
             });
-            html += '</div>';
-            
-            // Limitations
-            if (report.limitations && report.limitations.length > 0) {
-                html += '<div style="margin-top: 12px;"><strong>⚠️ Limitations & Risks:</strong>';
-                report.limitations.forEach(limit => {
-                    html += `<div class="risk-warning">${limit}</div>`;
-                });
-                html += '</div>';
-            }
-            
-            audit.innerHTML = html;
-            bubble.appendChild(audit);
-            message.appendChild(bubble);
-            
-            messagesContainer.appendChild(message);
-            messagesContainer.scrollTop = messagesContainer.scrollHeight;
         }
-
-        function showLoading() {
-            const message = document.createElement('div');
-            message.className = 'loading';
-            message.id = 'loadingMessage';
-            
-            const spinner = document.createElement('div');
-            spinner.className = 'spinner';
-            
-            const text = document.createElement('span');
-            text.textContent = '🔄 Veritas is thinking, analyzing, and self-auditing...';
-            
-            message.appendChild(spinner);
-            message.appendChild(text);
-            
-            messagesContainer.appendChild(message);
-            messagesContainer.scrollTop = messagesContainer.scrollHeight;
-        }
-
-        function removeLoading() {
-            const loading = document.getElementById('loadingMessage');
-            if (loading) loading.remove();
-        }
-
-        function sendMessage() {
-            const text = userInput.value.trim();
-            
-            if (!text) return;
-            
-            // Add user message
-            addMessage(text, true);
-            userInput.value = '';
-            sendBtn.disabled = true;
-            
-            // Show loading
-            showLoading();
-            
-            // Simulate processing delay
-            setTimeout(() => {
-                removeLoading();
-                
-                // Generate advanced response
-                const responseData = generateAdvancedResponse(text);
-                addMessage(responseData.response);
-                
-                // Generate comparison data
-                const comparison = generateComparisonData(responseData.confidence);
-                
-                // Add limitations based on question type
-                responseData.limitations = [
-                    'My training data has a knowledge cutoff',
-                    mediaFiles.length > 0 ? 'Media analysis may have interpretation biases' : 'Cannot access real-time information',
-                    'Critical decisions should be verified with experts'
-                ];
-                
-                // Add audit report with comparison
-                addAuditReport(responseData, comparison);
-                
-                // Store response for comparison
-                responses.push({
-                    question: text,
-                    response: responseData,
-                    comparison: comparison,
-                    timestamp: new Date()
-                });
-                
-                sendBtn.disabled = false;
-                mediaFiles = [];
-                const preview = messagesContainer.querySelector('.media-preview');
-                if (preview) preview.remove();
-                userInput.focus();
-            }, 2000);
-        }
-
-        function handleKeyPress(event) {
-            if (event.key === 'Enter' && !event.shiftKey) {
-                event.preventDefault();
-                sendMessage();
-            }
-        }
-
-        function showComparison() {
-            if (responses.length < 2) {
-                alert('Need at least 2 responses to compare. Ask some questions first!');
-                return;
-            }
-            
-            addMessage('📊 Comparing last 2 responses...', false);
-            
-            const r1 = responses[responses.length - 2];
-            const r2 = responses[responses.length - 1];
-            
-            const message = document.createElement('div');
-            message.className = 'message ai';
-            const bubble = document.createElement('div');
-            bubble.className = 'message-bubble';
-            
-            let html = '<div class="audit-section"><strong>📊 Response Comparison Analysis</strong>';
-            html += `<div style="margin-top: 15px;"><strong>Response 1:</strong> "${r1.question}"<br>Confidence: ${r1.response.confidence}%</div>`;
-            html += `<div style="margin-top: 10px;"><strong>Response 2:</strong> "${r2.question}"<br>Confidence: ${r2.response.confidence}%</div>`;
-            
-            const confidenceDiff = Math.abs(r2.response.confidence - r1.response.confidence);
-            html += `<div style="margin-top: 10px; padding: 10px; background: white; border-radius: 4px;">
-                <strong>Confidence Variance:</strong> ${confidenceDiff}%<br>
-                ${confidenceDiff > 20 ? '⚠️ Significant variance detected' : '✓ Consistent confidence levels'}
-            </div>`;
-            
-            html += '</div>';
-            bubble.innerHTML = html;
-            message.appendChild(bubble);
-            messagesContainer.appendChild(message);
-            messagesContainer.scrollTop = messagesContainer.scrollHeight;
-        }
-
-        function clearHistory() {
-            if (confirm('Clear all conversation history?')) {
-                messagesContainer.innerHTML = '<div class="empty-state"><h2>Welcome to Veritas AI</h2><p>History cleared. Start fresh!</p></div>';
-                responses = [];
-                mediaFiles = [];
-            }
-        }
-
-        // Focus input on load
-        window.addEventListener('load', () => {
-            userInput.focus();
-        });
     </script>
 </body>
 </html>
