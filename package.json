@@ -1,0 +1,13 @@
+{
+  "name": "veritas-ai",
+  "version": "1.0.0",
+  "description": "Your AI that fact-checks itself",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "python -m http.server 8000"
+  },
+  "keywords": ["ai", "self-auditing", "verifiable"],
+  "author": "Veritas Team",
+  "license": "Proprietary"
+}
