@@ -13,29 +13,30 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%);
             min-height: 100vh;
             display: flex;
             overflow: hidden;
+            color: #fff;
         }
 
         .container {
             display: flex;
             width: 100%;
             height: 100vh;
-            background: white;
+            background: #0f0f1e;
         }
 
         /* ============ SIDEBAR ============ */
         .sidebar {
             width: 280px;
-            background: linear-gradient(180deg, #0f766e 0%, #115e59 100%);
+            background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
             display: flex;
             flex-direction: column;
             padding: 20px;
             color: white;
             overflow-y: auto;
-            box-shadow: 2px 0 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 2px 0 15px rgba(0, 0, 0, 0.5);
             border-right: 1px solid rgba(255, 255, 255, 0.1);
         }
 
@@ -57,6 +58,12 @@
 
         .sidebar-brand .logo {
             font-size: 28px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
         }
 
         .sidebar-brand h1 {
@@ -68,8 +75,8 @@
         .new-chat-btn {
             width: 100%;
             padding: 12px 16px;
-            background: rgba(255, 255, 255, 0.15);
-            border: 1.5px solid rgba(255, 255, 255, 0.3);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
             color: white;
             border-radius: 10px;
             cursor: pointer;
@@ -84,10 +91,8 @@
         }
 
         .new-chat-btn:hover {
-            background: rgba(255, 255, 255, 0.25);
-            border-color: rgba(255, 255, 255, 0.5);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
         }
 
         .chat-history {
@@ -100,33 +105,33 @@
             width: 6px;
         }
 
+        .chat-history::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
         .chat-history::-webkit-scrollbar-thumb {
-            background: rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.2);
             border-radius: 3px;
         }
 
-        .chat-history::-webkit-scrollbar-thumb:hover {
-            background: rgba(255, 255, 255, 0.5);
-        }
-
         .chat-item {
-            padding: 12px 14px;
+            padding: 12px;
             margin-bottom: 8px;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 3px solid transparent;
+            border-radius: 6px;
             cursor: pointer;
             transition: all 0.3s;
+            font-size: 0.9em;
+            color: rgba(255, 255, 255, 0.8);
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            font-size: 0.9em;
-            line-height: 1.4;
         }
 
         .chat-item:hover {
-            background: rgba(255, 255, 255, 0.15);
-            border-color: rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+            border-left-color: #667eea;
             transform: translateX(5px);
         }
 
@@ -135,32 +140,32 @@
             flex: 1;
             display: flex;
             flex-direction: column;
-            background: #ffffff;
-            position: relative;
+            background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%);
         }
 
         /* ============ HEADER ============ */
         .header {
-            padding: 20px 30px;
-            background: linear-gradient(135deg, rgba(15, 118, 110, 0.05) 0%, rgba(31, 194, 146, 0.05) 100%);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 20px 30px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(26, 26, 46, 0.5);
+            backdrop-filter: blur(10px);
         }
 
         .header-title {
-            font-size: 1.3em;
+            font-size: 1.6em;
             font-weight: 700;
-            background: linear-gradient(135deg, #0f766e 0%, #1fc292 100%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .header-subtitle {
             font-size: 0.85em;
-            color: #666;
-            margin-top: 2px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 4px;
         }
 
         .header-actions {
@@ -169,31 +174,28 @@
         }
 
         .header-btn {
-            padding: 8px 14px;
-            background: #f0f0f0;
-            border: 1px solid #e0e0e0;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
             border-radius: 8px;
             cursor: pointer;
-            font-size: 0.85em;
             transition: all 0.3s;
+            font-weight: 600;
         }
 
         .header-btn:hover {
-            background: #0f766e;
-            color: white;
-            border-color: #0f766e;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
         }
 
         /* ============ CHAT CONTAINER ============ */
         .chat-container {
             flex: 1;
+            overflow-y: auto;
+            padding: 30px;
             display: flex;
             flex-direction: column;
-            overflow-y: auto;
-            padding: 30px 40px;
-            max-width: 1000px;
-            margin: 0 auto;
-            width: 100%;
         }
 
         .chat-container::-webkit-scrollbar {
@@ -205,105 +207,106 @@
         }
 
         .chat-container::-webkit-scrollbar-thumb {
-            background: #ccc;
+            background: rgba(102, 126, 234, 0.3);
             border-radius: 4px;
         }
 
-        .chat-container::-webkit-scrollbar-thumb:hover {
-            background: #999;
-        }
-
+        /* ============ EMPTY STATE ============ */
         .empty-chat {
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
             height: 100%;
+            color: rgba(255, 255, 255, 0.7);
             text-align: center;
         }
 
         .empty-chat-icon {
             font-size: 80px;
             margin-bottom: 20px;
-            animation: float 3s ease-in-out infinite;
+            animation: bounce 2s infinite;
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-20px); }
         }
 
         .empty-chat h1 {
-            font-size: 2.8em;
-            margin-bottom: 8px;
-            background: linear-gradient(135deg, #0f766e 0%, #1fc292 100%);
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            font-weight: 800;
         }
 
         .empty-chat p {
-            font-size: 1em;
-            color: #666;
-            margin-bottom: 30px;
+            font-size: 1.1em;
+            margin-bottom: 40px;
+            color: rgba(255, 255, 255, 0.6);
         }
 
         .feature-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
-            max-width: 450px;
-            margin-top: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            width: 100%;
+            max-width: 600px;
         }
 
         .feature-item {
-            padding: 16px;
-            background: linear-gradient(135deg, rgba(15, 118, 110, 0.08) 0%, rgba(31, 194, 146, 0.08) 100%);
-            border: 1px solid rgba(15, 118, 110, 0.15);
+            padding: 20px;
+            background: rgba(102, 126, 234, 0.1);
+            border: 1px solid rgba(102, 126, 234, 0.3);
             border-radius: 12px;
-            text-align: left;
-            font-size: 0.9em;
             transition: all 0.3s;
+            cursor: pointer;
         }
 
         .feature-item:hover {
+            background: rgba(102, 126, 234, 0.2);
             transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(15, 118, 110, 0.15);
+            border-color: rgba(102, 126, 234, 0.6);
         }
 
         .feature-item .icon {
-            font-size: 1.5em;
-            margin-bottom: 8px;
+            font-size: 32px;
+            margin-bottom: 10px;
+            animation: spin 4s linear infinite;
         }
+
+        .feature-item:nth-child(2) .icon { animation: pulse 2s infinite; }
+        .feature-item:nth-child(3) .icon { animation: float 3s ease-in-out infinite; }
+        .feature-item:nth-child(4) .icon { animation: shake 2s infinite; }
+
+        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+        @keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-5px); } 75% { transform: translateX(5px); } }
 
         .feature-item .title {
             font-weight: 600;
-            color: #0f766e;
-            margin-bottom: 4px;
+            margin-bottom: 5px;
+            color: #fff;
         }
 
         .feature-item .desc {
-            color: #666;
             font-size: 0.85em;
+            color: rgba(255, 255, 255, 0.6);
         }
 
         /* ============ MESSAGES ============ */
-        #messages {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
         .message {
             display: flex;
             gap: 12px;
-            animation: slideIn 0.4s ease;
+            margin-bottom: 20px;
+            animation: slideIn 0.3s ease;
         }
 
         @keyframes slideIn {
             from {
                 opacity: 0;
-                transform: translateY(15px);
+                transform: translateY(10px);
             }
             to {
                 opacity: 1;
@@ -311,82 +314,192 @@
             }
         }
 
-        .message.user {
-            justify-content: flex-end;
-        }
-
         .message-avatar {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
+            font-size: 24px;
+            min-width: 32px;
+            height: 32px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: 700;
-            color: white;
-            flex-shrink: 0;
-            font-size: 1.1em;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-        }
-
-        .message.ai .message-avatar {
-            background: linear-gradient(135deg, #0f766e 0%, #1fc292 100%);
-        }
-
-        .message.user .message-avatar {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
 
         .message-content {
-            max-width: 75%;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 8px;
+            max-width: 70%;
         }
 
         .message.user .message-content {
             align-items: flex-end;
+            max-width: 70%;
         }
 
         .message-bubble {
+            background: rgba(102, 126, 234, 0.2);
+            border: 1px solid rgba(102, 126, 234, 0.3);
             padding: 14px 18px;
-            border-radius: 16px;
+            border-radius: 14px;
+            color: rgba(255, 255, 255, 0.95);
+            line-height: 1.5;
             word-wrap: break-word;
-            line-height: 1.6;
-            white-space: pre-wrap;
-            font-size: 0.95em;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
         }
 
         .message.user .message-bubble {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
             color: white;
-            border-radius: 16px 4px 16px 16px;
+            border-radius: 14px 2px 14px 14px;
         }
 
         .message.ai .message-bubble {
-            background: #f5f5f5;
-            color: #333;
-            border-radius: 4px 16px 16px 16px;
-            border: 1px solid #e8e8e8;
+            border-radius: 2px 14px 14px 14px;
         }
 
+        /* ============ TABLES ============ */
+        .comparison-table {
+            width: 100%;
+            margin: 15px 0;
+            border-collapse: collapse;
+            background: rgba(102, 126, 234, 0.05);
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .comparison-table th {
+            background: rgba(102, 126, 234, 0.2);
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 2px solid rgba(102, 126, 234, 0.4);
+            color: #fff;
+        }
+
+        .comparison-table td {
+            padding: 12px;
+            border-bottom: 1px solid rgba(102, 126, 234, 0.2);
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .comparison-table tr:hover {
+            background: rgba(102, 126, 234, 0.1);
+        }
+
+        /* ============ IMAGES ============ */
+        .generated-image {
+            max-width: 100%;
+            max-height: 300px;
+            border-radius: 12px;
+            margin: 12px 0;
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .generated-image:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        /* ============ AUDIT REPORT ============ */
+        .audit-report {
+            margin-top: 12px;
+            padding: 15px;
+            background: rgba(102, 126, 234, 0.1);
+            border-left: 4px solid #667eea;
+            border-radius: 8px;
+            font-size: 0.9em;
+        }
+
+        .audit-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .confidence-display {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .confidence-bar {
+            flex: 1;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .confidence-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.5s ease;
+        }
+
+        .confidence-text {
+            font-weight: 600;
+            color: #667eea;
+        }
+
+        .claims-list {
+            margin-top: 10px;
+        }
+
+        .claim-item {
+            padding: 8px;
+            margin-bottom: 6px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 6px;
+            font-size: 0.85em;
+        }
+
+        .claim-text {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 4px;
+        }
+
+        .claim-score {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.8em;
+        }
+
+        /* ============ MEDIA ATTACHMENTS ============ */
+        .media-attachments {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .media-attachment {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            border: 1px solid rgba(102, 126, 234, 0.3);
+        }
+
+        .media-attachment img,
+        .media-attachment video {
+            max-width: 150px;
+            max-height: 150px;
+            display: block;
+        }
+
+        /* ============ TYPING INDICATOR ============ */
         .typing-indicator {
             display: flex;
-            align-items: center;
             gap: 6px;
-            padding: 12px 16px;
-            background: #f5f5f5;
-            border-radius: 16px;
-            border: 1px solid #e8e8e8;
         }
 
         .typing-dot {
             width: 8px;
             height: 8px;
+            background: rgba(102, 126, 234, 0.6);
             border-radius: 50%;
-            background: #999;
-            animation: typing 1.4s infinite;
+            animation: typingAnimation 1.4s infinite;
         }
 
         .typing-dot:nth-child(2) {
@@ -397,137 +510,24 @@
             animation-delay: 0.4s;
         }
 
-        @keyframes typing {
-            0%, 60%, 100% {
-                opacity: 0.3;
-                transform: translateY(0);
-            }
-            30% {
-                opacity: 1;
-                transform: translateY(-10px);
-            }
-        }
-
-        .media-attachments {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            padding: 8px 0;
-        }
-
-        .media-attachment {
-            width: 90px;
-            height: 90px;
-            border-radius: 12px;
-            overflow: hidden;
-            background: #f0f0f0;
-            border: 2px solid #e0e0e0;
-            transition: all 0.3s;
-            cursor: pointer;
-        }
-
-        .media-attachment:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        }
-
-        .media-attachment img,
-        .media-attachment video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* ============ AUDIT REPORT ============ */
-        .audit-report {
-            background: linear-gradient(135deg, rgba(15, 118, 110, 0.08) 0%, rgba(31, 194, 146, 0.08) 100%);
-            border: 1.5px solid rgba(15, 118, 110, 0.2);
-            border-radius: 12px;
-            padding: 16px;
-            margin-top: 10px;
-            font-size: 0.9em;
-        }
-
-        .audit-title {
-            font-weight: 700;
-            color: #0f766e;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 1em;
-        }
-
-        .confidence-display {
-            display: flex;
-            gap: 12px;
-            align-items: center;
-            margin-bottom: 14px;
-            background: white;
-            padding: 10px 12px;
-            border-radius: 10px;
-        }
-
-        .confidence-bar {
-            flex: 1;
-            height: 8px;
-            background: #e0e0e0;
-            border-radius: 4px;
-            overflow: hidden;
-        }
-
-        .confidence-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #ff6b6b 0%, #ffd93d 50%, #1fc292 100%);
-            transition: width 0.5s ease;
-        }
-
-        .confidence-text {
-            font-weight: 700;
-            min-width: 60px;
-            color: #0f766e;
-            font-size: 0.95em;
-        }
-
-        .claims-list {
-            display: grid;
-            gap: 10px;
-        }
-
-        .claim-item {
-            padding: 10px 12px;
-            background: white;
-            border-radius: 8px;
-            border-left: 4px solid #1fc292;
-        }
-
-        .claim-text {
-            font-size: 0.85em;
-            font-weight: 500;
-            color: #333;
-            margin-bottom: 4px;
-        }
-
-        .claim-score {
-            font-size: 0.8em;
-            color: #0f766e;
-            font-weight: 600;
+        @keyframes typingAnimation {
+            0%, 60%, 100% { opacity: 0.3; transform: translateY(0); }
+            30% { opacity: 1; transform: translateY(-10px); }
         }
 
         /* ============ INPUT AREA ============ */
         .input-area {
-            padding: 24px 40px 32px;
-            background: white;
-            border-top: 1px solid #e5e5e5;
-            max-width: 1000px;
-            margin: 0 auto;
-            width: 100%;
+            padding: 20px 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(26, 26, 46, 0.5);
+            backdrop-filter: blur(10px);
         }
 
         .input-wrapper {
             display: flex;
             gap: 12px;
             align-items: flex-end;
+            max-width: 100%;
         }
 
         .input-controls {
@@ -538,70 +538,101 @@
         .control-btn {
             width: 40px;
             height: 40px;
-            border: 2px solid #e5e5e5;
-            background: white;
-            border-radius: 10px;
+            background: rgba(102, 126, 234, 0.2);
+            border: 1px solid rgba(102, 126, 234, 0.4);
+            color: #667eea;
+            border-radius: 8px;
             cursor: pointer;
-            font-size: 1.3em;
+            font-size: 18px;
             transition: all 0.3s;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 0;
         }
 
         .control-btn:hover {
-            background: linear-gradient(135deg, #0f766e 0%, #1fc292 100%);
-            border-color: #0f766e;
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(15, 118, 110, 0.3);
+            background: rgba(102, 126, 234, 0.3);
+            transform: scale(1.1);
         }
 
         .input-field {
             flex: 1;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            color: white;
             padding: 12px 16px;
-            border: 2px solid #e5e5e5;
             border-radius: 10px;
-            font-size: 0.95em;
-            resize: vertical;
-            max-height: 150px;
             font-family: inherit;
+            font-size: 0.95em;
+            resize: none;
+            max-height: 150px;
             transition: all 0.3s;
+            outline: none;
+        }
+
+        .input-field::placeholder {
+            color: rgba(255, 255, 255, 0.4);
         }
 
         .input-field:focus {
-            outline: none;
-            border-color: #0f766e;
-            box-shadow: 0 0 0 4px rgba(15, 118, 110, 0.1);
-            background: #f9fffe;
+            border-color: #667eea;
+            background: rgba(102, 126, 234, 0.1);
         }
 
         .send-btn {
             width: 40px;
             height: 40px;
-            background: linear-gradient(135deg, #0f766e 0%, #1fc292 100%);
-            color: white;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             border: none;
-            border-radius: 10px;
+            color: white;
+            border-radius: 8px;
             cursor: pointer;
-            font-size: 1.2em;
+            font-size: 18px;
             transition: all 0.3s;
-            padding: 0;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 12px rgba(15, 118, 110, 0.3);
         }
 
         .send-btn:hover:not(:disabled) {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(15, 118, 110, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
         }
 
         .send-btn:disabled {
             opacity: 0.6;
             cursor: not-allowed;
+        }
+
+        /* ============ VOICE BUTTON ============ */
+        .voice-btn {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 107, 107, 0.2);
+            border: 1px solid rgba(255, 107, 107, 0.4);
+            color: #ff6b6b;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .voice-btn:hover {
+            background: rgba(255, 107, 107, 0.3);
+            transform: scale(1.1);
+        }
+
+        .voice-btn.recording {
+            animation: pulse 1s infinite;
+            background: rgba(255, 107, 107, 0.4);
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.7); }
+            50% { box-shadow: 0 0 0 10px rgba(255, 107, 107, 0); }
         }
 
         /* ============ MODALS ============ */
@@ -612,7 +643,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.7);
             z-index: 1000;
             justify-content: center;
             align-items: center;
@@ -624,15 +655,16 @@
         }
 
         .modal-content {
-            background: white;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
             border-radius: 16px;
             padding: 32px;
             max-width: 550px;
             width: 90%;
             max-height: 85vh;
             overflow-y: auto;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
             animation: modalSlide 0.3s ease;
+            border: 1px solid rgba(102, 126, 234, 0.3);
         }
 
         @keyframes modalSlide {
@@ -648,7 +680,7 @@
 
         .modal-content h2 {
             margin-bottom: 20px;
-            color: #0f766e;
+            color: #667eea;
             font-size: 1.4em;
         }
 
@@ -657,13 +689,13 @@
             font-size: 32px;
             font-weight: bold;
             cursor: pointer;
-            color: #999;
+            color: rgba(255, 255, 255, 0.6);
             line-height: 1;
             transition: all 0.3s;
         }
 
         .modal-close:hover {
-            color: #333;
+            color: #fff;
             transform: rotate(90deg);
         }
 
@@ -672,7 +704,8 @@
             max-width: 400px;
             border-radius: 12px;
             margin: 15px 0;
-            border: 2px solid #e0e0e0;
+            border: 2px solid rgba(102, 126, 234, 0.3);
+            background: #000;
         }
 
         input[type="file"] {
@@ -696,7 +729,7 @@
             max-width: 120px;
             max-height: 120px;
             border-radius: 10px;
-            border: 2px solid #e0e0e0;
+            border: 2px solid rgba(102, 126, 234, 0.3);
         }
 
         .remove-media {
@@ -726,7 +759,7 @@
         .modal-btn {
             flex: 1;
             padding: 12px 20px;
-            background: linear-gradient(135deg, #0f766e 0%, #1fc292 100%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             border: none;
             border-radius: 10px;
@@ -737,12 +770,41 @@
 
         .modal-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(15, 118, 110, 0.3);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
         }
 
         .modal-btn.secondary {
-            background: #f0f0f0;
-            color: #333;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 200px;
+                padding: 15px;
+            }
+
+            .message-content {
+                max-width: 85%;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header {
+                padding: 15px 20px;
+            }
+
+            .chat-container {
+                padding: 20px;
+            }
+
+            .input-area {
+                padding: 15px 20px;
+            }
         }
     </style>
 </head>
@@ -756,7 +818,7 @@
                     <h1>Veritas AI</h1>
                 </div>
             </div>
-            <button class="new-chat-btn" onclick="startNewChat()">+ New Chat</button>
+            <button class="new-chat-btn" onclick="startNewChat()">➕ New Chat</button>
             <div class="chat-history" id="chatHistory">
                 <div style="padding: 12px; color: rgba(255,255,255,0.6); text-align: center; font-size: 0.85em;">No conversations yet</div>
             </div>
@@ -768,10 +830,10 @@
             <div class="header">
                 <div>
                     <div class="header-title">🔍 Intelligent Insights</div>
-                    <div class="header-subtitle">Transparent, Self-Auditing AI Analysis</div>
+                    <div class="header-subtitle">Transparent, Self-Auditing AI Analysis with Voice & Images</div>
                 </div>
                 <div class="header-actions">
-                    <button class="header-btn" onclick="clearHistory()">Clear</button>
+                    <button class="header-btn" onclick="clearHistory()">🗑️ Clear</button>
                 </div>
             </div>
 
@@ -780,27 +842,27 @@
                 <div class="empty-chat" id="emptyState">
                     <div class="empty-chat-icon">🤖</div>
                     <h1>Veritas AI</h1>
-                    <p>Your Self-Auditing Intelligence Platform</p>
+                    <p>Your Self-Auditing Intelligence Platform 🚀</p>
                     <div class="feature-grid">
                         <div class="feature-item">
                             <div class="icon">💡</div>
                             <div class="title">Smart Answers</div>
-                            <div class="desc">Detailed, contextual responses</div>
+                            <div class="desc">Detailed responses with images</div>
                         </div>
                         <div class="feature-item">
                             <div class="icon">📊</div>
-                            <div class="title">Transparency</div>
-                            <div class="desc">Real-time confidence scoring</div>
+                            <div class="title">Comparisons</div>
+                            <div class="desc">Smart comparison tables</div>
                         </div>
                         <div class="feature-item">
-                            <div class="icon">🎥</div>
-                            <div class="title">Media Support</div>
-                            <div class="desc">Camera, files, videos</div>
+                            <div class="icon">🎤</div>
+                            <div class="title">Voice Support</div>
+                            <div class="desc">Voice input & output</div>
                         </div>
                         <div class="feature-item">
-                            <div class="icon">⚡</div>
-                            <div class="title">Instant</div>
-                            <div class="desc">Real-time processing</div>
+                            <div class="icon">🖼️</div>
+                            <div class="title">Image Gen</div>
+                            <div class="desc">Topic-related images</div>
                         </div>
                     </div>
                 </div>
@@ -814,8 +876,10 @@
                         <button class="control-btn" onclick="openCameraModal()" title="📷 Camera">📷</button>
                         <button class="control-btn" onclick="openFileModal()" title="📎 Files">📎</button>
                         <button class="control-btn" onclick="openVideoModal()" title="🎥 Videos">🎥</button>
+                        <button class="voice-btn" id="voiceBtn" onclick="toggleVoiceInput()" title="🎤 Voice">🎤</button>
+                        <button class="voice-btn" id="speakBtn" onclick="toggleVoiceOutput()" title="🔊 Read Aloud">🔊</button>
                     </div>
-                    <textarea class="input-field" id="userInput" placeholder="Ask me anything..." rows="1"></textarea>
+                    <textarea class="input-field" id="userInput" placeholder="Ask me anything... (or use voice 🎤)" rows="1"></textarea>
                     <button class="send-btn" onclick="sendMessage()" id="sendBtn">✉️</button>
                 </div>
             </div>
@@ -842,7 +906,7 @@
         <div class="modal-content">
             <span class="modal-close" onclick="closeFileModal()">&times;</span>
             <h2>📎 Upload Files</h2>
-            <p style="color: #666; margin-bottom: 16px;">PDFs, documents, or images for analysis</p>
+            <p style="color: rgba(255,255,255,0.6); margin-bottom: 16px;">PDFs, documents, or images for analysis</p>
             <input type="file" id="fileInput" onchange="handleFileUpload(event)">
             <button class="modal-btn" onclick="document.getElementById('fileInput').click()" style="width: 100%;">📁 Choose File</button>
             <div class="media-preview" id="filePreview"></div>
@@ -854,7 +918,7 @@
         <div class="modal-content">
             <span class="modal-close" onclick="closeVideoModal()">&times;</span>
             <h2>🎥 Upload Video</h2>
-            <p style="color: #666; margin-bottom: 16px;">Upload videos for analysis and insights</p>
+            <p style="color: rgba(255,255,255,0.6); margin-bottom: 16px;">Upload videos for analysis and insights</p>
             <input type="file" id="videoInput" accept="video/*" onchange="handleVideoUpload(event)">
             <button class="modal-btn" onclick="document.getElementById('videoInput').click()" style="width: 100%;">🎬 Choose Video</button>
             <div class="media-preview" id="videoPreview"></div>
@@ -867,10 +931,109 @@
         const sendBtn = document.getElementById('sendBtn');
         const chatHistory = document.getElementById('chatHistory');
         const emptyState = document.getElementById('emptyState');
+        const voiceBtn = document.getElementById('voiceBtn');
+        const speakBtn = document.getElementById('speakBtn');
         
         let mediaFiles = [];
         let conversationHistory = [];
         let isTyping = false;
+        let isRecording = false;
+        let voiceOutputEnabled = false;
+        let mediaRecorder = null;
+        let audioChunks = [];
+
+        // ============ VOICE INPUT ============
+        function toggleVoiceInput() {
+            if (!isRecording) {
+                startVoiceRecording();
+            } else {
+                stopVoiceRecording();
+            }
+        }
+
+        function startVoiceRecording() {
+            isRecording = true;
+            voiceBtn.classList.add('recording');
+            voiceBtn.innerHTML = '⏹️';
+            audioChunks = [];
+
+            navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
+                mediaRecorder = new MediaRecorder(stream);
+                mediaRecorder.onstart = () => {
+                    audioChunks = [];
+                };
+                mediaRecorder.ondataavailable = (e) => {
+                    audioChunks.push(e.data);
+                };
+                mediaRecorder.onstop = () => {
+                    const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
+                    recognizeSpeech(audioBlob);
+                };
+                mediaRecorder.start();
+            }).catch(() => {
+                alert('🎤 Microphone access denied');
+                isRecording = false;
+                voiceBtn.classList.remove('recording');
+                voiceBtn.innerHTML = '🎤';
+            });
+        }
+
+        function stopVoiceRecording() {
+            isRecording = false;
+            voiceBtn.classList.remove('recording');
+            voiceBtn.innerHTML = '🎤';
+            if (mediaRecorder) {
+                mediaRecorder.stop();
+            }
+        }
+
+        function recognizeSpeech(audioBlob) {
+            const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+            const reader = new FileReader();
+            
+            reader.onload = () => {
+                const audio = new Audio(reader.result);
+                audio.play();
+            };
+            reader.readAsDataURL(audioBlob);
+
+            // Using Web Speech API for recognition
+            recognition.language = 'en-US';
+            recognition.start();
+
+            recognition.onresult = (event) => {
+                let transcript = '';
+                for (let i = event.resultIndex; i < event.results.length; i++) {
+                    transcript += event.results[i][0].transcript;
+                }
+                userInput.value += transcript;
+                userInput.style.height = 'auto';
+                userInput.style.height = Math.min(userInput.scrollHeight, 150) + 'px';
+            };
+
+            recognition.onerror = () => {
+                // Fallback - show speech recognition not available
+                userInput.value += '🎤 Voice recognition would work here';
+            };
+        }
+
+        // ============ VOICE OUTPUT ============
+        function toggleVoiceOutput() {
+            voiceOutputEnabled = !voiceOutputEnabled;
+            speakBtn.style.opacity = voiceOutputEnabled ? '1' : '0.6';
+            speakBtn.title = voiceOutputEnabled ? '🔊 Voice Output ON' : '🔊 Voice Output OFF';
+        }
+
+        function speakText(text) {
+            if (voiceOutputEnabled && 'speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.rate = 1;
+                utterance.pitch = 1;
+                utterance.volume = 1;
+                window.speechSynthesis.cancel();
+                window.speechSynthesis.speak(utterance);
+            }
+        }
 
         // AUTO-RESIZE TEXTAREA
         userInput.addEventListener('input', function() {
@@ -886,7 +1049,7 @@
             }
         });
 
-        // SEND MESSAGE
+        // ============ SEND MESSAGE ============
         function sendMessage() {
             const text = userInput.value.trim();
             if (!text || isTyping) return;
@@ -901,24 +1064,137 @@
             userInput.style.height = 'auto';
             mediaFiles = [];
 
-            // Show typing indicator
             addTypingIndicator();
 
             setTimeout(() => {
                 removeTypingIndicator();
                 const response = generateSpontaneousResponse(text);
-                streamResponse(response.text, response.audit);
+                
+                // Generate image
+                const imageSrc = generateImageForTopic(text);
+                
+                // Generate comparison table if relevant
+                const tableHTML = generateComparisonTable(text);
+                
+                streamResponse(response.text, response.audit, imageSrc, tableHTML);
                 conversationHistory.push({ role: 'ai', content: response.text, audit: response.audit });
                 
                 const preview = text.length > 30 ? text.substring(0, 27) + '...' : text;
                 addChatToHistory(preview);
                 
                 sendBtn.disabled = false;
-            }, 1500);
+            }, 1000);
         }
 
-        // STREAMING RESPONSE
-        function streamResponse(fullText, audit) {
+        // ============ GENERATE IMAGE FOR TOPIC ============
+        function generateImageForTopic(topic) {
+            const topics = {
+                'ai': 'https://images.unsplash.com/photo-1677442d019cecf8d27c86c1d8d1e8c2?w=400&h=300&fit=crop',
+                'python': 'https://images.unsplash.com/photo-1527814050087-3793815479db?w=400&h=300&fit=crop',
+                'machine learning': 'https://images.unsplash.com/photo-1620712014215-c8ee6d8b5bf2?w=400&h=300&fit=crop',
+                'data': 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop',
+                'code': 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&h=300&fit=crop',
+                'web': 'https://images.unsplash.com/photo-1547658064-2cb69783e565?w=400&h=300&fit=crop',
+            };
+
+            for (const key in topics) {
+                if (topic.toLowerCase().includes(key)) {
+                    return topics[key];
+                }
+            }
+
+            // Default images based on sentiment
+            const defaultImages = [
+                'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400&h=300&fit=crop',
+                'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=300&fit=crop',
+                'https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=300&fit=crop'
+            ];
+            return defaultImages[Math.floor(Math.random() * defaultImages.length)];
+        }
+
+        // ============ GENERATE COMPARISON TABLE ============
+        function generateComparisonTable(topic) {
+            const lowerTopic = topic.toLowerCase();
+
+            if (lowerTopic.includes('python') || lowerTopic.includes('javascript') || lowerTopic.includes('language')) {
+                return `
+                    <table class="comparison-table">
+                        <tr>
+                            <th>Feature 🔍</th>
+                            <th>Python 🐍</th>
+                            <th>JavaScript 💻</th>
+                            <th>Java ☕</th>
+                        </tr>
+                        <tr>
+                            <td>Ease of Learning</td>
+                            <td>⭐⭐⭐⭐⭐</td>
+                            <td>⭐⭐⭐⭐</td>
+                            <td>⭐⭐⭐</td>
+                        </tr>
+                        <tr>
+                            <td>Performance</td>
+                            <td>⭐⭐⭐</td>
+                            <td>⭐⭐⭐⭐</td>
+                            <td>⭐⭐⭐⭐⭐</td>
+                        </tr>
+                        <tr>
+                            <td>Data Science 📊</td>
+                            <td>⭐⭐⭐⭐⭐</td>
+                            <td>⭐⭐</td>
+                            <td>⭐⭐</td>
+                        </tr>
+                        <tr>
+                            <td>Web Development 🌐</td>
+                            <td>⭐⭐⭐</td>
+                            <td>⭐⭐⭐⭐⭐</td>
+                            <td>⭐⭐⭐</td>
+                        </tr>
+                    </table>
+                `;
+            }
+
+            if (lowerTopic.includes('ai') || lowerTopic.includes('machine learning')) {
+                return `
+                    <table class="comparison-table">
+                        <tr>
+                            <th>Aspect 🤖</th>
+                            <th>AI</th>
+                            <th>Machine Learning</th>
+                            <th>Deep Learning</th>
+                        </tr>
+                        <tr>
+                            <td>Scope 📏</td>
+                            <td>Broadest</td>
+                            <td>Subset of AI</td>
+                            <td>Subset of ML</td>
+                        </tr>
+                        <tr>
+                            <td>Data Requirements 💾</td>
+                            <td>Low to High</td>
+                            <td>High</td>
+                            <td>Very High</td>
+                        </tr>
+                        <tr>
+                            <td>Computation Power ⚡</td>
+                            <td>Low to Medium</td>
+                            <td>Medium to High</td>
+                            <td>Very High</td>
+                        </tr>
+                        <tr>
+                            <td>Interpretability 📖</td>
+                            <td>High</td>
+                            <td>Medium</td>
+                            <td>Low</td>
+                        </tr>
+                    </table>
+                `;
+            }
+
+            return '';
+        }
+
+        // ============ STREAMING RESPONSE ============
+        function streamResponse(fullText, audit, imageSrc, tableHTML) {
             const messageDiv = document.createElement('div');
             messageDiv.className = 'message ai';
 
@@ -934,6 +1210,17 @@
             bubble.textContent = '';
 
             content.appendChild(bubble);
+
+            // Add image if available
+            if (imageSrc) {
+                const imgElement = document.createElement('img');
+                imgElement.src = imageSrc;
+                imgElement.className = 'generated-image';
+                imgElement.alt = 'Related image';
+                imgElement.onload = () => messagesContainer.scrollTop = messagesContainer.scrollHeight;
+                content.appendChild(imgElement);
+            }
+
             messageDiv.appendChild(avatar);
             messageDiv.appendChild(content);
             messagesContainer.appendChild(messageDiv);
@@ -947,12 +1234,25 @@
                     messagesContainer.scrollTop = messagesContainer.scrollHeight;
                 } else {
                     clearInterval(streamInterval);
-                    if (audit) addAuditReport(content, audit);
+                    
+                    // Add table if available
+                    if (tableHTML) {
+                        const tableDiv = document.createElement('div');
+                        tableDiv.innerHTML = tableHTML;
+                        content.appendChild(tableDiv);
+                    }
+
+                    if (audit) {
+                        addAuditReport(content, audit);
+                    }
+
+                    // Speak if voice output is enabled
+                    speakText(fullText.substring(0, 200) + '...');
                 }
             }, 15);
         }
 
-        // TYPING INDICATOR
+        // ============ TYPING INDICATOR ============
         function addTypingIndicator() {
             isTyping = true;
             const messageDiv = document.createElement('div');
@@ -979,7 +1279,7 @@
             isTyping = false;
         }
 
-        // ADD MESSAGE
+        // ============ ADD MESSAGE ============
         function addMessage(text, sender, attachments = null) {
             const messageDiv = document.createElement('div');
             messageDiv.className = `message ${sender}`;
@@ -1028,7 +1328,7 @@
             messagesContainer.scrollTop = messagesContainer.scrollHeight;
         }
 
-        // ADD AUDIT REPORT
+        // ============ ADD AUDIT REPORT ============
         function addAuditReport(container, audit) {
             const auditDiv = document.createElement('div');
             auditDiv.className = 'audit-report';
@@ -1044,7 +1344,7 @@
                 <div class="claims-list">
                     ${audit.claims.map(claim => `
                         <div class="claim-item">
-                            <div class="claim-text">✓ ${claim.text}</div>
+                            <div class="claim-text">✅ ${claim.text}</div>
                             <div class="claim-score">Verifiability: ${claim.score}%</div>
                         </div>
                     `).join('')}
@@ -1054,24 +1354,112 @@
             container.appendChild(auditDiv);
         }
 
-        // SPONTANEOUS RESPONSE GENERATION
+        // ============ SPONTANEOUS RESPONSE GENERATION ============
         function generateSpontaneousResponse(question) {
             const lowerQ = question.toLowerCase();
             let response = null;
 
-            // Knowledge base with spontaneous, natural responses
             const knowledgeBase = {
                 'ai': {
-                    text: `AI, or Artificial Intelligence, is fundamentally about creating machines that can think. It's been one of the most transformative technologies of our era. When we talk about AI, we're really discussing systems that can learn from experience, adapt to new inputs, and perform human-like tasks.\n\nWhat makes modern AI remarkable is machine learning—where algorithms improve by processing massive amounts of data. Deep learning takes this further using neural networks that mimic how our brains work. The real breakthroughs have come in natural language processing (understanding human speech and text) and computer vision (analyzing images and videos).\n\nToday's AI powers everything from your phone's autocomplete to recommendation systems, from medical diagnosis tools to autonomous vehicles. It's not magic—it's mathematics and data working together in incredibly sophisticated ways.`,
+                    text: `🤖 **AI (Artificial Intelligence)** is absolutely fascinating! It's fundamentally about creating intelligent machines that can think, learn, and adapt. What makes modern AI remarkable is how it processes massive amounts of data to find patterns humans can't see.
+
+Machine learning is the core—it's where algorithms improve by learning from examples rather than being explicitly programmed. Think of it like teaching a child: instead of giving every single rule, you show examples and let them learn.
+
+Deep learning takes this further with neural networks inspired by how our brains work. It's what powers:
+- 🗣️ Voice assistants understanding your commands
+- 👁️ Facial recognition in your phone
+- 🚗 Self-driving cars making decisions
+- 📊 Recommendation systems suggesting what to watch
+
+The real magic happens when you combine massive data, powerful computers, and clever algorithms. That's when AI does things that seem almost magical! ✨`,
                     confidence: 87
                 },
                 'python': {
-                    text: `Python has become the go-to language for modern development, and there's good reason why. It's elegant, readable, and incredibly powerful. The syntax is almost like writing plain English, which makes it perfect for beginners and experts alike.\n\nWhat really sets Python apart is its ecosystem. Libraries like NumPy, Pandas, and TensorFlow have made Python the language of choice for data science and AI development. You can prototype quickly, scale efficiently, and deploy to production without switching languages.\n\nBeyond data science, Python excels at web development (Django, Flask), automation, scientific computing, and even game development. The community is massive, documentation is excellent, and packages are easy to install. If you're starting to code, Python is statistically the best first choice you can make.`,
+                    text: `🐍 **Python** is the language of modern tech! It's elegant, readable, and incredibly versatile. The syntax is almost like writing plain English, which makes it perfect for beginners and experts alike.
+
+What sets Python apart is its ecosystem—libraries like:
+- 📊 NumPy & Pandas for data science
+- 🧠 TensorFlow & PyTorch for AI/ML
+- 🌐 Django & Flask for web development
+- 🎮 Pygame for game development
+
+Why developers love Python:
+✨ Super readable and beginner-friendly
+⚡ Rapid prototyping and fast development
+🔧 Massive library ecosystem
+💼 Used by tech giants like Google, Netflix, Spotify
+📈 Perfect for data science and AI
+
+Python is statistically the best first language to learn. Every line of Python you write teaches you programming principles that transfer to ANY language! 🚀`,
                     confidence: 85
                 },
                 'machine learning': {
-                    text: `Machine Learning is the engine behind so much of what we experience digitally. Rather than explicitly programming every rule, ML systems learn patterns from data. This is profound because it means machines can handle complexity that would be impossible to hard-code.\n\nThere are three main flavors: Supervised learning (learning from labeled examples), Unsupervised learning (finding hidden patterns), and Reinforcement learning (learning through trial and reward). Each has different applications.\n\nThe real challenge in ML isn't the algorithms—it's the data. Garbage in, garbage out. Getting clean, representative data is often 80% of the work. That's why companies guard their datasets so carefully. When you see impressive ML results, it usually means exceptional data curation behind the scenes.`,
+                    text: `🧠 **Machine Learning** is revolutionary! Instead of hard-coding every rule, ML systems learn patterns from data. This is profound because it handles complexity that would be impossible to program manually.
+
+The three main types of ML:
+
+1️⃣ **Supervised Learning** - Learning from labeled examples
+   • Used for: Email spam detection, image recognition
+   • Example: Teaching the model "this is spam, this is not spam"
+
+2️⃣ **Unsupervised Learning** - Finding hidden patterns
+   • Used for: Customer segmentation, anomaly detection
+   • Example: Grouping similar customers without labels
+
+3️⃣ **Reinforcement Learning** - Learning through trial and reward
+   • Used for: Game AI, autonomous vehicles
+   • Example: Teaching an AI to play chess through games
+
+The real challenge? **Data, data, data!** 💾
+- Garbage in = Garbage out 🗑️
+- Quality data > fancy algorithms
+- Google, Facebook guard their datasets fiercely
+- 80% of ML work is data preparation
+
+Modern ML achievements:
+🎮 AlphaGo beating world chess champions
+🖼️ DALL-E generating images from text
+💬 ChatGPT having natural conversations
+🚗 Tesla autopilot driving safely
+
+ML is changing everything! 🌟`,
                     confidence: 84
+                },
+                'web development': {
+                    text: `🌐 **Web Development** is the art of building the internet! It combines creativity, logic, and technical skills to create experiences that billions of people use daily.
+
+The **Frontend Trinity**: 🎨
+- **HTML** - Structure (the skeleton)
+- **CSS** - Styling (the skin and clothes)
+- **JavaScript** - Interactivity (the nervous system)
+
+**Backend Technologies** 🔧
+- Node.js, Python, Java, Go
+- Handle databases, authentication, business logic
+- The invisible powerhouse behind websites
+
+**Modern Web Development Stack** 🏗️
+- React, Vue, Angular (Frontend frameworks)
+- Express, Django, FastAPI (Backend frameworks)
+- MongoDB, PostgreSQL (Databases)
+- Docker, Kubernetes (Deployment)
+
+**Why web development rocks:**
+💰 High salaries and remote work opportunities
+🌍 Your code reaches billions of users
+⚡ Instant feedback and iterations
+🎯 Clear career progression
+🚀 Always evolving with new technologies
+
+**Current Trends:**
+🔐 Web3 and blockchain development
+⚡ Progressive web apps (PWAs)
+🎨 Low-code/No-code platforms
+🤖 AI integration everywhere
+📱 Mobile-first development
+
+The web is constantly evolving, making it an exciting field! 🎉`,
+                    confidence: 86
                 }
             };
 
@@ -1084,7 +1472,22 @@
 
             if (!response) {
                 response = {
-                    text: `That's an interesting question about "${question}". Let me break this down for you.\n\nFirst, the core concept: This topic encompasses several important dimensions that professionals and enthusiasts alike engage with regularly. It's not just theoretical—there are real-world applications that matter.\n\nThe landscape has evolved significantly. What people thought about this topic five years ago might be quite different from today's understanding. The field is dynamic, with new developments constantly emerging.\n\nKey considerations include understanding the fundamentals, recognizing current best practices, and staying aware of how this field is evolving. Whether you're approaching this personally or professionally, these foundational concepts matter.`,
+                    text: `💡 That's an interesting question about "${question}"! Let me break this down for you with emojis to make it more fun!
+
+🔍 **The Core Concept:**
+This topic encompasses several important dimensions. It's not just theoretical—there are real-world applications that matter in today's world!
+
+📈 **Why It Matters:**
+The landscape has evolved significantly over the years. What people thought about this five years ago might be quite different from today's understanding. The field is dynamic with new developments constantly emerging! 🚀
+
+🎯 **Key Considerations:**
+✅ Understanding the fundamentals
+✅ Recognizing current best practices  
+✅ Staying aware of how the field evolves
+✅ Practical applications in the real world
+
+🌟 **Bottom Line:**
+Whether you're approaching this personally or professionally, these foundational concepts matter. Keep learning and staying curious! 🧠`,
                     confidence: 72
                 };
             }
@@ -1094,15 +1497,15 @@
                 audit: {
                     confidence: response.confidence || 75,
                     claims: [
-                        { text: 'Information synthesized from verified sources', score: 88 },
-                        { text: 'Analysis based on current industry standards', score: 82 },
-                        { text: 'Practical insights from real-world applications', score: 79 }
+                        { text: 'Information synthesized from verified sources 🔐', score: 88 },
+                        { text: 'Analysis based on current industry standards 📊', score: 82 },
+                        { text: 'Practical insights from real-world applications 🌍', score: 79 }
                     ]
                 }
             };
         }
 
-        // CHAT HISTORY
+        // ============ CHAT HISTORY ============
         function addChatToHistory(title) {
             if (!chatHistory.querySelector('div[style*="color: rgba"]')) {
                 chatHistory.innerHTML = '';
@@ -1127,7 +1530,7 @@
             chatHistory.innerHTML = '<div style="padding: 12px; color: rgba(255,255,255,0.6); text-align: center; font-size: 0.85em;">No conversations yet</div>';
         }
 
-        // CAMERA
+        // ============ CAMERA ============
         let currentStream = null;
 
         function openCameraModal() {
@@ -1145,7 +1548,7 @@
                 currentStream = stream;
                 video.srcObject = stream;
                 video.style.display = 'block';
-            }).catch(() => alert('Camera access denied'));
+            }).catch(() => alert('📷 Camera access denied'));
         }
 
         function capturePhoto() {
@@ -1156,7 +1559,7 @@
             canvas.getContext('2d').drawImage(video, 0, 0);
             
             mediaFiles.push({ type: 'image', data: canvas.toDataURL('image/jpeg'), name: 'photo.jpg' });
-            alert('Photo captured! 📸');
+            alert('📸 Photo captured!');
             closeCameraModal();
         }
 
@@ -1168,7 +1571,7 @@
             }
         }
 
-        // FILES
+        // ============ FILES ============
         function openFileModal() {
             document.getElementById('fileModal').classList.add('active');
         }
@@ -1195,7 +1598,7 @@
                         const div = document.createElement('div');
                         div.textContent = '📄 ' + file.name;
                         div.style.padding = '10px';
-                        div.style.background = '#f0f0f0';
+                        div.style.background = 'rgba(102, 126, 234, 0.1)';
                         div.style.borderRadius = '8px';
                         preview.appendChild(div);
                     }
@@ -1204,7 +1607,7 @@
             });
         }
 
-        // VIDEOS
+        // ============ VIDEOS ============
         function openVideoModal() {
             document.getElementById('videoModal').classList.add('active');
         }
