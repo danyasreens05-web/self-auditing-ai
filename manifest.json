@@ -1,7 +1,7 @@
 {
   "name": "Veritas AI",
   "short_name": "Veritas",
-  "description": "An advanced AI system that generates answers and critically evaluates its own responses, providing a structured report with verifiable claims, confidence scores, and risk assessments for high-stakes applications.",
+  "description": "Your AI that fact-checks itself. Get smart answers with confidence scores, honest limitations, and verifiable reasoning.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",

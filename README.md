@@ -1,101 +1,65 @@
-# Veritas AI - Self-Auditing AI System
+# Veritas AI
 
-An advanced AI system that generates answers and critically evaluates its own responses, providing a structured report with verifiable claims, confidence scores, and risk assessments for high-stakes applications.
+🤖 **Your AI that fact-checks itself.** Veritas AI generates answers to your questions and then audits its own work—just like a good student reviewing their homework.
 
-## Overview
+## What Does It Do?
 
-Veritas AI is a sophisticated system built on Base44 (no-code platform) that:
-- Generates AI responses to user queries
-- Performs critical self-evaluation and auditing
-- Provides structured reports with confidence scores
-- Identifies and assesses risks in responses
-- Ensures verifiable and trustworthy AI outputs
+Veritas AI doesn't just give you answers. It:
+- **Answers your questions** clearly and thoughtfully
+- **Reviews its own work** for accuracy and completeness  
+- **Rates its confidence** on a scale you can trust
+- **Flags potential issues** and limitations honestly
+- **Shows you the details** so you know exactly what to believe
 
-## Features
+## Key Features
 
-- **Self-Auditing**: Automatically evaluates the quality and accuracy of generated responses
-- **Verifiable Claims**: Each claim is tracked and assessed for verifiability
-- **Confidence Scoring**: Provides confidence levels for each component of the response
-- **Risk Assessment**: Identifies potential risks and limitations
-- **Structured Reports**: Generates comprehensive, organized reports with all findings
+✅ **Smart Self-Review** - Every answer gets a thorough check  
+✅ **Confidence Ratings** - Know when Veritas is sure vs. uncertain  
+✅ **Honest About Limits** - Tells you what it doesn't know  
+✅ **Easy to Read** - Clean, organized reports you can understand  
+✅ **Verifiable Claims** - See the reasoning behind each statement
 
-## Project Structure
+## Running the App
 
-```
-.
-├── index.html              # Main HTML entry point
-├── manifest.json           # Web app manifest for PWA support
-├── public/
-│   └── assets/            # Compiled CSS and JavaScript
-│       ├── index-CUhlxpCT.css
-│       └── index-DA0vSYf3.js
-├── README.md              # This file
-└── docs/                  # Documentation
-```
-
-## Running the Application
-
-### Option 1: Using a Local Server
+### Quick Start
 
 ```bash
-# Using Python 3
+# Using Python (easiest)
 python -m http.server 8000
 
-# Using Node.js
+# Or Node.js
 npx http-server
-
-# Then navigate to http://localhost:8000
 ```
 
-### Option 2: Direct File Opening
+Then open [http://localhost:8000](http://localhost:8000) in your browser and start asking questions!
 
-Simply open `index.html` in your web browser.
+### What to Try
 
-### Option 3: Live Deployment
+- Ask a complex question
+- See Veritas think through it
+- Review the confidence scores
+- Check what it flagged as uncertain
 
-Visit: https://veritas-ai-a3f1a238.base44.app
+## Tech Stack
 
-## Technology Stack
+- **React** - Modern, responsive UI
+- **Vite** - Fast build tool
+- **CSS** - Clean, accessible styling
+- **JavaScript** - Smooth interactions
 
-- **Base44**: No-code platform for application development
-- **Vite**: Build tool (assets compiled to optimized JS/CSS)
-- **Supabase**: Backend storage for assets
-- **React**: Frontend framework (bundled in assets)
+## Want to Help?
 
-## Build Information
+We're always looking for ways to make Veritas better! Here's how to contribute:
 
-- CSS Bundle: `public/assets/index-CUhlxpCT.css`
-- JS Bundle: `public/assets/index-DA0vSYf3.js`
-- Both files are minified and optimized for production
+1. **Fork the repo** and make your changes
+2. **Test thoroughly** to make sure it works
+3. **Submit a pull request** with a clear description
+4. **Discuss ideas** in the issues section
 
-## Development Notes
+## Questions?
 
-This is a Base44 application, which is a no-code/low-code platform. The source code is compiled into the minified assets. To modify the application:
-
-1. Access the Base44 project editor (requires credentials)
-2. Make changes in the visual editor
-3. Deploy to the platform
-
-## Contributing
-
-For contributions to this repository, please:
-
-1. Fork the repository
-2. Create a feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a Pull Request
-
-## License
-
-This project is proprietary. All rights reserved.
-
-## Support
-
-For issues or questions about this application, please refer to the Base44 platform documentation or contact the development team.
+Have ideas, bugs to report, or just want to chat? Open an issue on GitHub—we read every one.
 
 ---
 
-**Project ID**: 697228e1ef6d9b1ba3f1a238
-**Platform**: Base44
-**Status**: Active and Deployed
+**Made with ❤️ by the Veritas team**
